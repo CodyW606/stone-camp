@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vision - Stone Camp Distribution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      color: white;
+      min-height: 100vh;
+    }
+    
+    nav {
+      background: #db1f1a;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #8e7654;
+    }
+
+    nav a.active {
+      color: #8e7654;
+    }
+    
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 100px 20px 40px;
+      text-align: center;
+    }
+    
+    .logo {
+      max-width: 60%;
+      height: auto;
+      margin: 2rem auto;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #8e7654;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .vision-container {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin: 3rem auto;
+      text-align: left;
+    }
+
+    .vision-statement {
+      background: rgba(0,0,0,0.2);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .vision-framework {
+      background: rgba(219, 31, 26, 0.1);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .brand-name {
+      color: #db1f1a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mission.html">Mission</a></li>
+      <li><a href="values.html">Values</a></li>
+      <li><a href="vision.html" class="active">Vision</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+    <img src="images/logo.png" alt="Stone Camp Distribution" class="logo">
+    <h1>Our Vision</h1>
+    
+    <div class="vision-container">
+      <div class="vision-statement">
+        To become a leading force in the spirits distribution industry, known for its exceptional service, innovative approach, and a portfolio of premium brands that resonate with consumers.
+      </div>
+      
+      <div class="vision-framework">
+        This framework aligns with the company's origins, values, and the unique character of the <span class="brand-name">"Wooooosky"</span> and <span class="brand-name">"1981 Premium Vodka"</span> brands.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

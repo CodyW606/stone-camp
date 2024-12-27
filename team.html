@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Team - Stone Camp Distribution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      color: white;
+      min-height: 100vh;
+    }
+    
+    nav {
+      background: #db1f1a;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #8e7654;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 40px;
+      text-align: center;
+    }
+    
+    .logo {
+      max-width: 60%;
+      height: auto;
+      margin: 2rem auto;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #8e7654;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .team-member {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .member-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .member-name {
+      color: #db1f1a;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .member-title {
+      color: #8e7654;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .member-bio {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mission.html">Mission</a></li>
+      <li><a href="values.html">Values</a></li>
+      <li><a href="vision.html">Vision</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+    <img src="images/logo.png" alt="Stone Camp Distribution" class="logo">
+    <h1>Our Team</h1>
+    
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="member-image">Photo Coming Soon</div>
+        <div class="member-name">Tom</div>
+        <div class="member-title">CEO</div>
+        <div class="member-bio">Bio coming soon</div>
+      </div>
+
+      <div class="team-member">
+        <div class="member-image">Photo Coming Soon</div>
+        <div class="member-name">Jorden</div>
+        <div class="member-title">COO</div>
+        <div class="member-bio">Bio coming soon</div>
+      </div>
+
+      <div class="team-member">
+        <div class="member-image">Photo Coming Soon</div>
+        <div class="member-name">Cody</div>
+        <div class="member-title">Marketing Manager</div>
+        <div class="member-bio">Bio coming soon</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
