@@ -3,6 +3,7 @@
 <head>
   <title>Stone Camp Distribution</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -48,6 +49,16 @@
     
     nav a:hover {
       color: white;
+    }
+    
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: #db1f1a;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
     }
     
     .hero {
@@ -148,15 +159,6 @@
       box-shadow: 0 6px 8px rgba(0,0,0,0.3);
     }
 
-    .menu-button {
-      display: none;
-      background: none;
-      border: none;
-      color: #db1f1a;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
     @media (max-width: 768px) {
       nav {
         padding: 0.5rem 1rem;
@@ -164,38 +166,31 @@
       }
 
       .menu-button {
-        display: block;
+        display: block !important;
+        z-index: 1000;
       }
 
       nav ul {
         display: none;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 70px;
         left: 0;
         width: 100%;
         background: #8e7654;
-        padding: 1rem 0;
+        padding: 20px 0;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 20px;
       }
 
       nav ul.show {
         display: flex;
       }
 
-      .hero-image {
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .hero-content {
-        justify-content: flex-start;
-        padding-top: 100px;
-      }
-
       .hero-box {
-        padding: 1.5rem;
+        width: 85%;
+        padding: 20px;
+        margin-top: 60px;
       }
 
       .slide-image {
@@ -207,7 +202,16 @@
       }
 
       .tagline {
-        font-size: 2rem;
+        font-size: 1.8rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+
+      .hero-content {
+        padding-top: 60px;
+        justify-content: flex-start;
       }
     }
   </style>
@@ -253,26 +257,31 @@
   </div>
 
   <script>
-    const slides = document.querySelectorAll('.hero-box');
-    let currentSlide = 0;
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.hero-box');
+      let currentSlide = 0;
 
-    function showSlide(index) {
-      slides.forEach(slide => {
-        slide.classList.remove('active');
+      function showSlide(index) {
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+        });
+        slides[index].classList.add('active');
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      showSlide(0);
+      setInterval(nextSlide, 5000);
+
+      const menuButton = document.querySelector('.menu-button');
+      const navMenu = document.querySelector('nav ul');
+      
+      menuButton.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
       });
-      slides[index].classList.add('active');
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    showSlide(0);
-    setInterval(nextSlide, 5000);
-
-    document.querySelector('.menu-button').addEventListener('click', function() {
-      document.querySelector('nav ul').classList.toggle('show');
     });
   </script>
 </body>
