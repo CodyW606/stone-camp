@@ -147,11 +147,75 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 8px rgba(0,0,0,0.3);
     }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: #db1f1a;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.5rem 1rem;
+        width: calc(100% - 2rem);
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #8e7654;
+        padding: 1rem 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .hero-image {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-content {
+        justify-content: flex-start;
+        padding-top: 100px;
+      }
+
+      .hero-box {
+        padding: 1.5rem;
+      }
+
+      .slide-image {
+        width: 200px;
+      }
+
+      .vertical-image {
+        width: 150px;
+      }
+
+      .tagline {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
   <nav>
     <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
+    <button class="menu-button">☰</button>
     <ul>
       <li><a href="./index.html" class="active">Home</a></li>
       <li><a href="./about.html">About</a></li>
@@ -206,6 +270,10 @@
 
     showSlide(0);
     setInterval(nextSlide, 5000);
+
+    document.querySelector('.menu-button').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('show');
+    });
   </script>
 </body>
 </html>
