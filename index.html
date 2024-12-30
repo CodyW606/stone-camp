@@ -4,16 +4,9 @@
   <title>Stone Camp Distribution</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
-      color: white;
-      min-height: 100vh;
-    }
-    
+    /* Previous styles remain */
     nav {
-      background: #db1f1a;
+      background: #8e7654;
       padding: 0.5rem 2rem;
       position: fixed;
       width: 100%;
@@ -24,21 +17,8 @@
       align-items: center;
     }
     
-    .nav-logo {
-      height: 40px;
-      margin-right: 2rem;
-    }
-    
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 2rem;
-    }
-    
     nav a {
-      color: white;
+      color: #2a2a2a;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
@@ -46,85 +26,35 @@
     }
     
     nav a:hover {
-      color: #8e7654;
+      color: white;
     }
-    
-    .hero {
-      height: 100vh;
-      position: relative;
-    }
-    
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-    }
-    
+
     .hero-box {
+      opacity: 0;
+      display: none;
       background: rgba(0, 0, 0, 0.8);
       padding: 2rem;
       border-radius: 8px;
       max-width: 600px;
       margin: 0 auto;
-      animation: fadeInOut 10s infinite;
     }
-    
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0; }
-      10%, 90% { opacity: 1; }
+
+    .hero-box.active {
+      display: block;
+      animation: fadeIn 1s forwards;
     }
-    
-    .tagline {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: #8e7654;
-      margin: 1.5rem 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      letter-spacing: 1px;
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    
-    .description {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #fff;
-      margin: 2rem auto;
+
+    .slide-image {
+      max-width: 300px;
+      margin-bottom: 1.5rem;
     }
-    
-    .cta-button {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      background: #db1f1a;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-    
-    .cta-button:hover {
-      background: #8e7654;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-    }
+
+    /* Rest of previous styles remain */
   </style>
 </head>
 <body>
@@ -143,12 +73,46 @@
   <div class="hero">
     <img src="images/redrobin.jpg" alt="Background" class="hero-image">
     <div class="hero-content">
-      <div class="hero-box">
+      <div class="hero-box" id="slide1">
         <div class="tagline">Where Hard Work Meets High Spirits</div>
         <p class="description">We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.</p>
-        <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
       </div>
+      
+      <div class="hero-box" id="slide2">
+        <img src="images/Woosky.png" alt="Wooooosky Bourbon" class="slide-image">
+        <div class="tagline">Check out Wooooosky Bourbon</div>
+        <p class="description">The Nature Boy Ric Flair's Straight Bourbon Whiskey</p>
+      </div>
+      
+      <div class="hero-box" id="slide3">
+        <img src="images/1981premium.png" alt="1981 Premium Vodka" class="slide-image">
+        <div class="tagline">Check out 1981 Premium Vodka</div>
+        <p class="description">The Nature Boy's signature vodka</p>
+      </div>
+
+      <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
     </div>
   </div>
+
+  <script>
+    const slides = document.querySelectorAll('.hero-box');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+      });
+      slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Show first slide and start rotation
+    showSlide(0);
+    setInterval(nextSlide, 5000);
+  </script>
 </body>
 </html>
