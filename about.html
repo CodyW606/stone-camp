@@ -3,23 +3,32 @@
 <head>
   <title>About - Stone Camp Distribution</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(180deg, #3a3a3a 0%, #252525 100%);
-      min-height: 100vh;
+      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
       color: white;
+      min-height: 100vh;
     }
     
     nav {
-      background: #db1f1a;
-      padding: 1rem;
+      background: #8e7654;
+      padding: 0.5rem 2rem;
       position: fixed;
-      width: 100%;
+      width: calc(100% - 4rem);
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .nav-logo {
+      height: 50px;
+      width: auto;
     }
     
     nav ul {
@@ -27,12 +36,11 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
       gap: 2rem;
     }
     
     nav a {
-      color: white;
+      color: #db1f1a;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
@@ -40,11 +48,17 @@
     }
     
     nav a:hover {
-      color: #8e7654;
+      color: white;
     }
 
-    nav a.active {
-      color: #8e7654;
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: #db1f1a;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
     }
     
     .content {
@@ -59,7 +73,7 @@
       height: auto;
       margin: 2rem auto;
     }
-    
+
     .about-text {
       text-align: left;
       font-size: 1.1rem;
@@ -89,19 +103,66 @@
       margin: 2rem 0;
       text-align: center;
     }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.5rem 1rem;
+        width: calc(100% - 2rem);
+      }
+
+      .menu-button {
+        display: block !important;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #db1f1a;
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul a {
+        color: #8e7654;
+      }
+
+      nav ul a:hover {
+        color: white;
+      }
+
+      .content {
+        padding-top: 80px;
+      }
+
+      .logo {
+        max-width: 80%;
+      }
+    }
   </style>
 </head>
 <body>
-<nav>
-  <ul>
-    <li><a href="./index.html">Home</a></li>
-    <li><a href="./about.html">About</a></li>
-    <li><a href="./mission.html">Mission</a></li>
-    <li><a href="./values.html">Values</a></li>
-    <li><a href="./vision.html">Vision</a></li>
-    <li><a href="./team.html">Team</a></li>
-  </ul>
-</nav>
+  <nav>
+    <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
+    <button class="menu-button">☰</button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about.html" class="active">About</a></li>
+      <li><a href="./mission.html">Mission</a></li>
+      <li><a href="./values.html">Values</a></li>
+      <li><a href="./vision.html">Vision</a></li>
+      <li><a href="./team.html">Team</a></li>
+    </ul>
+  </nav>
   
   <div class="content">
     <img src="images/logo.png" alt="Stone Camp Distribution" class="logo">
@@ -116,5 +177,16 @@
     
     <div class="tagline">Stone Camp Distribution Inc. - Where hard work meets high spirits.</div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.querySelector('.menu-button');
+      const navMenu = document.querySelector('nav ul');
+      
+      menuButton.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+      });
+    });
+  </script>
 </body>
 </html>
