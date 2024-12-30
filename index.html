@@ -4,17 +4,38 @@
   <title>Stone Camp Distribution</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* Previous styles remain */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      color: white;
+      min-height: 100vh;
+    }
+    
     nav {
       background: #8e7654;
       padding: 0.5rem 2rem;
       position: fixed;
-      width: 100%;
+      width: calc(100% - 4rem);
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       display: flex;
       align-items: center;
+      justify-content: space-between;
+    }
+    
+    .nav-logo {
+      height: 50px;
+      width: auto;
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
     }
     
     nav a {
@@ -28,33 +49,101 @@
     nav a:hover {
       color: white;
     }
-
+    
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    
     .hero-box {
       opacity: 0;
       display: none;
       background: rgba(0, 0, 0, 0.8);
-      padding: 2rem;
+      padding: 3rem;
       border-radius: 8px;
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
+      transition: opacity 0.5s ease;
     }
-
+    
     .hero-box.active {
       display: block;
       animation: fadeIn 1s forwards;
     }
-
+    
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
+    
     .slide-image {
-      max-width: 300px;
-      margin-bottom: 1.5rem;
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 2rem;
     }
-
-    /* Rest of previous styles remain */
+    
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #8e7654;
+      margin: 1.5rem 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      letter-spacing: 1px;
+    }
+    
+    .description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #fff;
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+    
+    .cta-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: #db1f1a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      position: fixed;
+      bottom: 2rem;
+      z-index: 3;
+    }
+    
+    .cta-button:hover {
+      background: #8e7654;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
@@ -89,9 +178,9 @@
         <div class="tagline">Check out 1981 Premium Vodka</div>
         <p class="description">The Nature Boy's signature vodka</p>
       </div>
-
-      <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
     </div>
+    
+    <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
   </div>
 
   <script>
