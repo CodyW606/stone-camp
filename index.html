@@ -299,21 +299,10 @@
   .footer {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    left: 0;
     background: #000000;
-    padding: 10px 0;
+    padding: 10px 20px;
     z-index: 100;
-  }
-
-  .scroll-container {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 100%;
-  }
-
-  .scroll-content {
-    display: inline-block;
-    animation: scroll 20s linear infinite;
   }
 
   .social-link {
@@ -323,26 +312,18 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    transition: color 0.3s;
   }
 
   .social-link:hover {
     color: #8e7654;
   }
-
-  @keyframes scroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-  }
 </style>
 
 <div class="footer">
-  <div class="scroll-container">
-    <div class="scroll-content">
-      <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i> Follow us on Facebook
-      </a>
-    </div>
-  </div>
+  <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+    <i class="fab fa-facebook"></i>
+  </a>
 </div>
 </body>
 </html>
