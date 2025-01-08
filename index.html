@@ -223,6 +223,7 @@
       }
     }
   </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <nav>
@@ -294,5 +295,54 @@
       });
     });
   </script>
+<style>
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #000000;
+    padding: 10px 0;
+    z-index: 100;
+  }
+
+  .scroll-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .scroll-content {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+  }
+
+  .social-link {
+    color: #db1f1a;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .social-link:hover {
+    color: #8e7654;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+</style>
+
+<div class="footer">
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+        <i class="fab fa-facebook"></i> Follow us on Facebook
+      </a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
