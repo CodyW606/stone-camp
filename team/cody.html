@@ -4,6 +4,7 @@
   <title>Cody - Stone Camp Distribution</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -29,6 +30,36 @@
     .nav-logo {
       height: 50px;
       width: auto;
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: #db1f1a;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: white;
+    }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: #db1f1a;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
     }
     
     .content {
@@ -77,28 +108,99 @@
       line-height: 1.8;
       margin: 2rem auto;
       max-width: 600px;
+      text-align: left;
     }
 
-    .back-button {
+    .button-container {
+      margin: 2rem 0;
+    }
+
+    .cta-button {
       display: inline-block;
-      margin-top: 2rem;
+      margin: 0.5rem;
       padding: 1rem 2rem;
       background: #db1f1a;
       color: white;
       text-decoration: none;
       border-radius: 4px;
       transition: all 0.3s;
+      font-size: 1.1rem;
     }
 
-    .back-button:hover {
+    .back-button {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1rem 2rem;
       background: #8e7654;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+    }
+
+    .cta-button:hover, .back-button:hover {
       transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #000000;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+
+    .social-link {
+      color: #db1f1a;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: #8e7654;
     }
 
     @media (max-width: 768px) {
       nav {
         padding: 0.5rem 1rem;
         width: calc(100% - 2rem);
+      }
+
+      .menu-button {
+        display: block !important;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #db1f1a;
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul a {
+        color: white;
+      }
+
+      nav ul a:hover {
+        color: #8e7654;
       }
 
       .profile-image {
@@ -116,6 +218,7 @@
 
       .bio {
         font-size: 1.1rem;
+        padding: 0 1rem;
       }
     }
   </style>
@@ -125,6 +228,15 @@
     <a href="../index.html">
       <img src="../images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
     </a>
+    <button class="menu-button">☰</button>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../mission.html">Mission</a></li>
+      <li><a href="../values.html">Values</a></li>
+      <li><a href="../vision.html">Vision</a></li>
+      <li><a href="../team.html">Team</a></li>
+    </ul>
   </nav>
   
   <div class="content">
@@ -132,10 +244,35 @@
       <img src="../images/Cody.jpg" alt="Cody" onerror="this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
     </div>
     <h1 class="name">Cody</h1>
-<div class="title">Marketing</div>
-<div class="bio">Cody is a versatile professional with a diverse skill set, including marketing, IT, web design, social media management, and market research. He holds an undergraduate degree in Sports Management, with a focus on social media management, a master’s degree in Coaching, and is currently pursuing an MBA. Cody’s experience includes working as the Social Media Manager and Web Developer for GME Construction Services, where he streamlined digital operations and enhanced brand presence. He also founded and scaled a local sports social media business, showcasing his entrepreneurial drive and ability to adapt to evolving market trends. With expertise in analyzing consumer behavior, identifying industry trends, and crafting data-driven strategies, Cody excels at delivering comprehensive solutions to drive organizational success.</div>
-<a href="mailto:cody@stonecampdistribution.com" class="cta-button" style="margin-bottom: 1rem;">Email Cody</a>
-<a href="../team.html" class="back-button">Back to Team</a>
+    <div class="title">Marketing Manager</div>
+    <div class="bio">
+      Cody is a versatile professional with a diverse skill set, including marketing, IT, web design, social media management, and market research. He holds an undergraduate degree in Sports Management, with a focus on social media management, a master's degree in Coaching, and is currently pursuing an MBA. 
+      <br><br>
+      Cody's experience includes working as the Social Media Manager and Web Developer for GME Construction Services, where he streamlined digital operations and enhanced brand presence. He also founded and scaled a local sports social media business, showcasing his entrepreneurial drive and ability to adapt to evolving market trends. 
+      <br><br>
+      With expertise in analyzing consumer behavior, identifying industry trends, and crafting data-driven strategies, Cody excels at delivering comprehensive solutions to drive organizational success.
+    </div>
+    <div class="button-container">
+      <a href="mailto:cody@stonecampdistribution.com" class="cta-button">Email Cody</a>
+      <a href="../team.html" class="back-button">Back to Team</a>
+    </div>
   </div>
+
+  <div class="footer">
+    <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+      <i class="fab fa-facebook"></i>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.querySelector('.menu-button');
+      const navMenu = document.querySelector('nav ul');
+      
+      menuButton.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+      });
+    });
+  </script>
 </body>
 </html>
