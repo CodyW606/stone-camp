@@ -4,6 +4,7 @@
   <title>Team - Stone Camp Distribution</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -86,6 +87,7 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
+      margin-bottom: 4rem;
     }
 
     .team-member {
@@ -139,6 +141,29 @@
     .member-bio {
       font-size: 1.1rem;
       line-height: 1.6;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #000000;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+
+    .social-link {
+      color: #db1f1a;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: #8e7654;
     }
 
     @media (max-width: 768px) {
@@ -216,7 +241,6 @@
       }
     }
   </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <nav>
@@ -241,31 +265,37 @@
     <div class="team-grid">
       <a href="./team/tom.html" class="team-member">
         <div class="member-image">
-          <img src="images/tom.jpg" alt="Tom" onerror="this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
+          <img src="images/tom.jpg" alt="Tom" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
         </div>
         <div class="member-name">Tom</div>
         <div class="member-title">CEO</div>
-    
+        <div class="member-bio">Bio coming soon</div>
       </a>
 
       <a href="./team/jorden.html" class="team-member">
         <div class="member-image">
-          <img src="images/Jorden.jpg" alt="Jorden" onerror="this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
+          <img src="images/Jorden.jpg" alt="Jorden" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
         </div>
         <div class="member-name">Jorden</div>
         <div class="member-title">COO</div>
-    
+        <div class="member-bio">Bio coming soon</div>
       </a>
 
       <a href="./team/cody.html" class="team-member">
         <div class="member-image">
-          <img src="images/Cody.jpg" alt="Cody" onerror="this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
+          <img src="images/Cody.jpg" alt="Cody" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
         </div>
         <div class="member-name">Cody</div>
         <div class="member-title">Marketing Manager</div>
-       
+        <div class="member-bio">Bio coming soon</div>
       </a>
     </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+      <i class="fab fa-facebook"></i>
+    </a>
   </div>
 
   <script>
@@ -278,35 +308,5 @@
       });
     });
   </script>
-<style>
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background: #000000;
-    padding: 10px 20px;
-    z-index: 100;
-  }
-
-  .social-link {
-    color: #db1f1a;
-    text-decoration: none;
-    font-size: 1.2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s;
-  }
-
-  .social-link:hover {
-    color: #8e7654;
-  }
-</style>
-
-<div class="footer">
-  <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
-    <i class="fab fa-facebook"></i>
-  </a>
-</div>
 </body>
 </html>
