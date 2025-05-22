@@ -2,33 +2,43 @@
 <html>
 <head>
   <title>Values - Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      font-family: 'Oswald', sans-serif;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      background-size: 12px 12px, 12px 12px, 100% 100%;
       color: white;
       min-height: 100vh;
     }
     
     nav {
-      background: #8e7654;
-      padding: 0.5rem 2rem;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        #8e7654;
+      background-size: 6px 6px;
+      padding: 0.8rem 2rem;
       position: fixed;
       width: calc(100% - 4rem);
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     
     .nav-logo {
-      height: 50px;
+      height: 70px;
       width: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
     
     nav ul {
@@ -36,25 +46,29 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     
-nav a {
-  color: white;  /* Changed from #db1f1a to white */
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    nav a:hover {
+      color: #db1f1a;
+      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
+    }
 
-nav a:hover {
-  color: #db1f1a;  /* Changed from white to red */
-}
     .menu-button {
       display: none;
       background: none;
       border: none;
-      color: #db1f1a;
+      color: white;
       font-size: 2rem;
       cursor: pointer;
       padding: 0;
@@ -63,7 +77,7 @@ nav a:hover {
     .content {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 100px 20px 40px;
+      padding: 120px 20px 40px;
       text-align: center;
     }
     
@@ -71,13 +85,16 @@ nav a:hover {
       max-width: 60%;
       height: auto;
       margin: 2rem auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Bebas Neue', sans-serif;
       color: #8e7654;
       margin-bottom: 2rem;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      letter-spacing: 2px;
     }
 
     .values-container {
@@ -87,10 +104,12 @@ nav a:hover {
     .value-item {
       text-align: left;
       margin-bottom: 2rem;
-      padding: 1.5rem;
+      padding: 2rem;
       background: rgba(0,0,0,0.2);
       border-radius: 8px;
       transition: transform 0.3s;
+      border: 1px solid rgba(142, 118, 84, 0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     .value-item:hover {
@@ -99,25 +118,55 @@ nav a:hover {
 
     .value-title {
       color: #db1f1a;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
       font-weight: bold;
+      font-family: 'Playfair Display', serif;
     }
 
     .value-description {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       color: #fff;
+      font-weight: 300;
     }
 
     .special-value {
-      background: rgba(219, 31, 26, 0.1);
+      background: rgba(219, 31, 26, 0.15);
+      border: 1px solid rgba(219, 31, 26, 0.3);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #000000;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+
+    .social-link {
+      color: #db1f1a;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: #8e7654;
     }
 
     @media (max-width: 768px) {
       nav {
         padding: 0.5rem 1rem;
         width: calc(100% - 2rem);
+      }
+
+      .nav-logo {
+        height: 50px;
       }
 
       .menu-button {
@@ -147,11 +196,11 @@ nav a:hover {
       }
 
       nav ul a:hover {
-        color: white;
+        color: #8e7654;
       }
 
       .content {
-        padding-top: 80px;
+        padding-top: 100px;
       }
 
       .logo {
@@ -159,19 +208,19 @@ nav a:hover {
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
 
       .value-item {
-        padding: 1rem;
+        padding: 1.5rem;
       }
 
       .value-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
       }
 
       .value-description {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -179,8 +228,8 @@ nav a:hover {
 <body>
   <nav>
     <a href="./index.html">
-  <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
-</a>
+      <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
+    </a>
     <button class="menu-button">☰</button>
     <ul>
       <li><a href="./index.html">Home</a></li>
@@ -218,10 +267,16 @@ nav a:hover {
       </div>
 
       <div class="value-item special-value">
-        <div class="value-title">"Wooooo!" Spirit</div>
+        <div class="value-title">"Woooo!" Spirit</div>
         <div class="value-description">Celebrating success, embracing individuality, and having a little fun along the way.</div>
       </div>
     </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+      <i class="fab fa-facebook"></i>
+    </a>
   </div>
 
   <script>
