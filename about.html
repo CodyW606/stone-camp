@@ -2,33 +2,43 @@
 <html>
 <head>
   <title>About - Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      font-family: 'Oswald', sans-serif;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      background-size: 12px 12px, 12px 12px, 100% 100%;
       color: white;
       min-height: 100vh;
     }
     
     nav {
-      background: #8e7654;
-      padding: 0.5rem 2rem;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        #8e7654;
+      background-size: 6px 6px;
+      padding: 0.8rem 2rem;
       position: fixed;
       width: calc(100% - 4rem);
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     
     .nav-logo {
-      height: 50px;
+      height: 70px;
       width: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
     
     nav ul {
@@ -36,26 +46,29 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     
-nav a {
-  color: white;  /* Changed from #db1f1a to white */
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #db1f1a;  /* Changed from white to red */
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    nav a:hover {
+      color: #db1f1a;
+      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
+    }
 
     .menu-button {
       display: none;
       background: none;
       border: none;
-      color: #db1f1a;
+      color: white;
       font-size: 2rem;
       cursor: pointer;
       padding: 0;
@@ -64,7 +77,7 @@ nav a:hover {
     .content {
       max-width: 800px;
       margin: 0 auto;
-      padding: 100px 20px 40px;
+      padding: 120px 20px 40px;
       text-align: center;
     }
     
@@ -72,6 +85,7 @@ nav a:hover {
       max-width: 60%;
       height: auto;
       margin: 2rem auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
 
     .about-text {
@@ -79,6 +93,7 @@ nav a:hover {
       font-size: 1.1rem;
       line-height: 1.8;
       margin: 2rem 0;
+      font-weight: 300;
     }
     
     .about-text p {
@@ -97,17 +112,45 @@ nav a:hover {
 
     .tagline {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #8e7654;
       font-style: italic;
       margin: 2rem 0;
       text-align: center;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #000000;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+
+    .social-link {
+      color: #db1f1a;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: #8e7654;
     }
 
     @media (max-width: 768px) {
       nav {
         padding: 0.5rem 1rem;
         width: calc(100% - 2rem);
+      }
+
+      .nav-logo {
+        height: 50px;
       }
 
       .menu-button {
@@ -137,24 +180,28 @@ nav a:hover {
       }
 
       nav ul a:hover {
-        color: white;
+        color: #8e7654;
       }
 
       .content {
-        padding-top: 80px;
+        padding-top: 100px;
       }
 
       .logo {
         max-width: 80%;
+      }
+
+      .tagline {
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-   <a href="./index.html">
-  <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
-</a>
+    <a href="./index.html">
+      <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
+    </a>
     <button class="menu-button">☰</button>
     <ul>
       <li><a href="./index.html">Home</a></li>
@@ -170,14 +217,20 @@ nav a:hover {
     <img src="images/logo.png" alt="Stone Camp Distribution" class="logo">
     
     <div class="about-text">
-      <p>Stone Camp Distribution Inc., born from the rugged spirit of Appalachia, is a full-service promoter and distributor connecting premium brands with consumers. Founded by Thomas C. Smith, a native of Pike County, Kentucky, Stone Camp embodies the values of hard work, determination, and a touch of <span class="emphasis">"Wooooo!"</span></p>
+      <p>Stone Camp Distribution Inc., born from the rugged spirit of Appalachia, is a full-service distributor connecting premium brands with consumers. Founded by Thomas C. Smith, a native of Pike County, Kentucky, Stone Camp embodies the values of hard work, determination, and a touch of <span class="emphasis">"Woooo!"</span></p>
       
       <p>Inspired by Smith's Appalachian roots and the entrepreneurial spirit of his hometown, Stone Camp aims to be more than just a distributor; it's a partner in success. We understand the challenges of bringing a new product to market and are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients.</p>
       
-      <p>A key pillar of Stone Camp is our flagship brand: <span class="brand-name">Wooooosky</span>, a finely aged whiskey, created in partnership with the legendary "Nature Boy" Ric Flair. This collaboration embodies the spirit of Stone Camp – a blend of grit, determination, and a touch of flamboyant flair.</p>
+      <p>A key pillar of Stone Camp is our flagship brand: <span class="brand-name">Flair Spirits</span> - featuring Flair Bourbon, Vodka, Tequila, and Gin, created in partnership with the legendary "Nature Boy" Ric Flair. This collaboration embodies the spirit of Stone Camp – a blend of grit, determination, and a touch of flamboyant flair.</p>
     </div>
     
     <div class="tagline">Stone Camp Distribution Inc. - Where hard work meets high spirits.</div>
+  </div>
+
+  <div class="footer">
+    <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+      <i class="fab fa-facebook"></i>
+    </a>
   </div>
 
   <script>
