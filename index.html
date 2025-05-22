@@ -2,33 +2,40 @@
 <html>
 <head>
   <title>Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Oswald', sans-serif;
       background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
       color: white;
+      text-align: center;
       min-height: 100vh;
     }
     
     nav {
-      background: #8e7654;
-      padding: 0.5rem 2rem;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        #8e7654;
+      background-size: 6px 6px;
+      padding: 0.8rem 2rem;
       position: fixed;
       width: calc(100% - 4rem);
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     
     .nav-logo {
-      height: 50px;
+      height: 70px;
       width: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
     
     nav ul {
@@ -36,26 +43,29 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     
-nav a {
-  color: white;  /* Changed from #db1f1a to white */
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #db1f1a;  /* Changed from white to red */
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    nav a:hover {
+      color: #db1f1a;
+      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
+    }
     
     .menu-button {
       display: none;
       background: none;
       border: none;
-      color: #db1f1a;
+      color: white;
       font-size: 2rem;
       cursor: pointer;
       padding: 0;
@@ -91,22 +101,29 @@ nav a:hover {
     .hero-box {
       opacity: 0;
       display: none;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       padding: 3rem;
-      border-radius: 8px;
-      max-width: 800px;
+      border-radius: 12px;
+      width: 700px;
+      height: 400px;
       margin: 0 auto;
       transition: opacity 0.5s ease;
+      border: 2px solid rgba(142, 118, 84, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     
     .hero-box.active {
-      display: block;
+      opacity: 1;
       animation: fadeIn 1s forwards;
     }
     
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .slide-image {
@@ -114,6 +131,7 @@ nav a:hover {
       height: auto;
       display: block;
       margin: 0 auto 1rem auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
     }
 
     .vertical-image {
@@ -121,48 +139,98 @@ nav a:hover {
     }
     
     .tagline {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
       color: #8e7654;
       margin: 1rem 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+      letter-spacing: 2px;
+    }
+
+    .coming-soon {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: #db1f1a;
+      margin: 1rem 0;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      color: #8e7654;
+      margin: 0.5rem 0;
+      font-weight: 300;
       letter-spacing: 1px;
     }
     
     .description {
-      font-size: 1.2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
       line-height: 1.6;
       color: #fff;
       margin: 1rem auto;
       max-width: 600px;
+      font-weight: 300;
     }
     
     .cta-button {
       margin: 1.5rem auto 0;
-      padding: 1rem 2rem;
-      background: #db1f1a;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, #db1f1a, #a01510);
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 1.2rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
       text-decoration: none;
       display: block;
       width: fit-content;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
     .cta-button:hover {
-      background: #8e7654;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, #8e7654, #6d5c41);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #000000;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+
+    .social-link {
+      color: #db1f1a;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: #8e7654;
     }
 
     @media (max-width: 768px) {
       nav {
         padding: 0.5rem 1rem;
         width: calc(100% - 2rem);
+      }
+
+      .nav-logo {
+        height: 50px;
       }
 
       .menu-button {
@@ -192,11 +260,12 @@ nav a:hover {
       }
 
       nav ul a:hover {
-        color: white;
+        color: #8e7654;
       }
 
       .hero-box {
         width: 85%;
+        height: 350px;
         padding: 20px;
         margin-top: 60px;
       }
@@ -210,11 +279,19 @@ nav a:hover {
       }
 
       .tagline {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
+      }
+
+      .coming-soon {
+        font-size: 2.8rem;
+      }
+
+      .brand-subtitle {
+        font-size: 1.4rem;
       }
 
       .description {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
 
       .hero-content {
@@ -223,13 +300,12 @@ nav a:hover {
       }
     }
   </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <nav>
     <a href="./index.html">
-  <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
-</a>
+      <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
+    </a>
     <button class="menu-button">☰</button>
     <ul>
       <li><a href="./index.html" class="active">Home</a></li>
@@ -248,17 +324,27 @@ nav a:hover {
         <img src="images/logo.png" alt="Stone Camp Distribution" class="slide-image">
         <div class="tagline">Where Hard Work Meets High Spirits</div>
         <p class="description">We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.</p>
-        <a href="mailto:cody@stonecampdistribution.com" class="cta-button">Contact Us</a>
+        <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
       </div>
       
       <div class="hero-box" id="slide2">
-        <img src="images/Woosky.png" alt="Wooooosky" class="slide-image">
-        <div class="tagline">Check out Wooooosky</div>
-        <p class="description">The Nature Boy Ric Flair's Whiskey</p>
-        <a href="mailto:cody@stonecampdistribution.com" class="cta-button">Contact Us</a>
+        <div class="coming-soon">Flair Spirits</div>
+        <div class="brand-subtitle">Coming Soon</div>
+        <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
       </div>
       
+      <div class="hero-box" id="slide3">
+        <div class="coming-soon">Truce Spirits</div>
+        <div class="brand-subtitle">Coming Soon</div>
+        <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Contact Us</a>
+      </div>
     </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+      <i class="fab fa-facebook"></i>
+    </a>
   </div>
 
   <script>
@@ -289,35 +375,5 @@ nav a:hover {
       });
     });
   </script>
-<style>
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background: #000000;
-    padding: 10px 20px;
-    z-index: 100;
-  }
-
-  .social-link {
-    color: #db1f1a;
-    text-decoration: none;
-    font-size: 1.2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s;
-  }
-
-  .social-link:hover {
-    color: #8e7654;
-  }
-</style>
-
-<div class="footer">
-  <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
-    <i class="fab fa-facebook"></i>
-  </a>
-</div>
 </body>
 </html>
