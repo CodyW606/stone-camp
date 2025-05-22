@@ -2,34 +2,43 @@
 <html>
 <head>
   <title>Tom - Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      font-family: 'Oswald', sans-serif;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      background-size: 12px 12px, 12px 12px, 100% 100%;
       color: white;
       min-height: 100vh;
     }
     
     nav {
-      background: #8e7654;
-      padding: 0.5rem 2rem;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        #8e7654;
+      background-size: 6px 6px;
+      padding: 0.8rem 2rem;
       position: fixed;
       width: calc(100% - 4rem);
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     
     .nav-logo {
-      height: 50px;
+      height: 70px;
       width: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
     
     nav ul {
@@ -37,26 +46,29 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     
-nav a {
-  color: white;  /* Changed from #db1f1a to white */
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #db1f1a;  /* Changed from white to red */
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    nav a:hover {
+      color: #db1f1a;
+      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
+    }
 
     .menu-button {
       display: none;
       background: none;
       border: none;
-      color: #db1f1a;
+      color: white;
       font-size: 2rem;
       cursor: pointer;
       padding: 0;
@@ -65,7 +77,7 @@ nav a:hover {
     .content {
       max-width: 800px;
       margin: 0 auto;
-      padding: 100px 20px 40px;
+      padding: 120px 20px 40px;
       text-align: center;
     }
     
@@ -81,6 +93,8 @@ nav a:hover {
       font-size: 1rem;
       color: #666;
       overflow: hidden;
+      border: 3px solid rgba(142, 118, 84, 0.3);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
 
     .profile-image img {
@@ -90,58 +104,73 @@ nav a:hover {
     }
     
     .name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Bebas Neue', sans-serif;
       color: #db1f1a;
-      font-size: 3rem;
+      font-size: 4rem;
       margin: 1rem 0;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      letter-spacing: 3px;
     }
     
     .title {
       color: #8e7654;
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-bottom: 2rem;
-      font-weight: bold;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     .bio {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       line-height: 1.8;
       margin: 2rem auto;
       max-width: 600px;
       text-align: left;
+      font-weight: 300;
     }
 
     .button-container {
-      margin: 2rem 0;
+      margin: 3rem 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .cta-button {
       display: inline-block;
-      margin: 0.5rem;
-      padding: 1rem 2rem;
-      background: #db1f1a;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, #db1f1a, #a01510);
       color: white;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 6px;
       transition: all 0.3s;
       font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
     }
 
     .back-button {
       display: inline-block;
-      margin: 0.5rem;
-      padding: 1rem 2rem;
-      background: #8e7654;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, #8e7654, #6d5c41);
       color: white;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 6px;
       transition: all 0.3s;
       font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 15px rgba(142, 118, 84, 0.3);
     }
 
     .cta-button:hover, .back-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
     .footer {
@@ -171,6 +200,10 @@ nav a:hover {
       nav {
         padding: 0.5rem 1rem;
         width: calc(100% - 2rem);
+      }
+
+      .nav-logo {
+        height: 50px;
       }
 
       .menu-button {
@@ -203,22 +236,31 @@ nav a:hover {
         color: #8e7654;
       }
 
+      .content {
+        padding-top: 100px;
+      }
+
       .profile-image {
         width: 200px;
         height: 200px;
       }
 
       .name {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
 
       .title {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
       }
 
       .bio {
         font-size: 1.1rem;
         padding: 0 1rem;
+      }
+
+      .button-container {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -247,7 +289,7 @@ nav a:hover {
     <div class="title">Chief Executive Officer</div>
     <div class="bio">Bio coming soon</div>
     <div class="button-container">
-      <a href="mailto:tom@stonecampdistribution.com" class="cta-button">Email Tom</a>
+      <a href="mailto:tom@stone-camp.com" class="cta-button">Email Tom</a>
       <a href="../team.html" class="back-button">Back to Team</a>
     </div>
   </div>
