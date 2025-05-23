@@ -100,7 +100,6 @@
     
     .hero-box {
       opacity: 0;
-      display: none;
       background: rgba(0, 0, 0, 0.85);
       padding: 3rem;
       border-radius: 12px;
@@ -116,11 +115,13 @@
       align-items: center;
       position: absolute;
       top: 140px;
+      pointer-events: none;
     }
     
     .hero-box.active {
       opacity: 1;
       animation: fadeIn 1s forwards;
+      pointer-events: auto;
     }
     
     @keyframes fadeIn {
@@ -181,7 +182,7 @@
       margin: 1.5rem auto 0;
       padding: 1.2rem 2.5rem;
       background: linear-gradient(135deg, #db1f1a, #a01510);
-      color: white;
+      color: white !important;
       border: none;
       border-radius: 6px;
       font-size: 1.2rem;
@@ -189,11 +190,13 @@
       cursor: pointer;
       transition: all 0.3s;
       text-decoration: none;
-      display: block;
+      display: inline-block;
       width: fit-content;
       box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
       text-transform: uppercase;
       letter-spacing: 1px;
+      position: relative;
+      z-index: 10;
     }
     
     .cta-button:hover {
@@ -322,7 +325,7 @@
   <div class="hero">
     <img src="images/redrobin.jpg" alt="Background" class="hero-image">
     <div class="hero-content">
-      <div class="hero-box" id="slide1">
+      <div class="hero-box active" id="slide1">
         <img src="images/logo.png" alt="Stone Camp Distribution" class="slide-image">
         <div class="tagline">Where Hard Work Meets High Spirits</div>
         <p class="description">We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.</p>
@@ -332,7 +335,7 @@
       <div class="hero-box" id="slide2">
         <div class="coming-soon">FLAIR SPIRITS</div>
         <div class="brand-subtitle">Coming Soon</div>
-        <a href="https://www.flairspirits.com" class="cta-button">Visit the Official Website!</a>
+        <a href="https://www.flairspirits.com" target="_blank" class="cta-button">Visit the Official Website!</a>
       </div>
       
       <div class="hero-box" id="slide3">
