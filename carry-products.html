@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carry Our Products - Stone Camp Distribution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Oswald', sans-serif;
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
+        linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      background-size: 12px 12px, 12px 12px, 100% 100%;
+      color: white;
+      min-height: 100vh;
+    }
+    
+    nav {
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        #8e7654;
+      background-size: 6px 6px;
+      padding: 0.8rem 2rem;
+      position: fixed;
+      width: calc(100% - 4rem);
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .nav-logo {
+      height: 70px;
+      width: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2.5rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    nav a:hover {
+      color: #db1f1a;
+      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
+    }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 120px 20px 40px;
+      text-align: center;
+    }
+    
+    .logo {
+      max-width: 60%;
+      height: auto;
+      margin: 2rem auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: #8e7654;
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      letter-spacing: 2px;
+    }
+
+    .intro-text {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin: 3rem auto;
+      text-align: left;
+      font-weight: 300;
+      background: rgba(0,0,0,0.2);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(142, 118, 84, 0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .brand-name {
+      color: #db1f1a;
+      font-weight: bold;
+    }
+
+    .contact-form {
+      background: rgba(0,0,0,0.2);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem auto;
+      border: 1px solid rgba(142, 118, 84, 0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #8e7654;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(142, 118, 84, 0.3);
+      border-radius: 4px;
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #db1f1a;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .form-group select {
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: #2a2a2a;
+      color: white;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, #db1f1a, #a01510);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Oswald', sans-serif;
+      margin-top: 1rem;
+    }
+
+    .submit-button:hover {
+      background: linear-gradient(135deg, #8e7654, #6d5c41);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .required {
+      color: #db1f1a;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background: #000000;
+      padding: 10px 20px;
+      z-index: 100;
+    }
+
+    .social-link {
+      color: #db1f1a;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-link:hover {
+      color: #8e7654;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.5rem 1rem;
+        width: calc(100% - 2rem);
+      }
+
+      .nav-logo {
+        height: 50px;
+      }
+
+      .menu-button {
+        display: block !important;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #db1f1a;
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul a {
+        color: white;
+      }
+
+      nav ul a:hover {
+        color: #8e7654;
+      }
+
+      .content {
+        padding-top: 100px;
+      }
+
+      .logo {
+        max-width: 80%;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .intro-text {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+      }
+
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="./index.html">
+      <img src="images/logo.png" alt="Stone Camp Distribution" class="nav-logo">
+    </a>
+    <button class="menu-button">☰</button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./mission.html">Mission</a></li>
+      <li><a href="./values.html">Values</a></li>
+      <li><a href="./vision.html">Vision</a></li>
+      <li><a href="./team.html">Team</a></li>
+      <li><a href="./carry-products.html" class="active">Carry Our Products</a></li>
+    </ul>
+  </nav>
+  
+  <div class="content">
+    <img src="images/logo.png" alt="Stone Camp Distribution" class="logo">
+    <h1>Carry Our Products</h1>
+    
+    <div class="intro-text">
+      Partner with Stone Camp Distribution to bring premium spirits to your customers. We're looking for retailers, bars, restaurants, and distributors who share our commitment to quality and excellence. Our portfolio includes <span class="brand-name">Flair Spirits</span> and <span class="brand-name">Truce Spirits</span> - brands that embody the spirit of hard work and high-quality craftsmanship.
+    </div>
+
+    <form class="contact-form" action="mailto:web@stone-camp.com" method="post" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="businessName">Business Name <span class="required">*</span></label>
+          <input type="text" id="businessName" name="businessName" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Location <span class="required">*</span></label>
+          <input type="text" id="location" name="location" placeholder="City, State" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Tell us about your business and interest in our products</label>
+        <textarea id="message" name="message" placeholder="Business type, location details, which products interest you, volume expectations, etc..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-button">Get In Touch</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
+      <i class="fab fa-facebook"></i>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.querySelector('.menu-button');
+      const navMenu = document.querySelector('nav ul');
+      
+      menuButton.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+      });
+
+      // Handle form submission
+      const form = document.querySelector('.contact-form');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        let emailBody = 'New Partnership Inquiry from Stone Camp Distribution Website:\n\n';
+        
+        for (let [key, value] of formData.entries()) {
+          if (value.trim()) {
+            const label = document.querySelector(`label[for="${key}"]`).textContent.replace(' *', '');
+            emailBody += `${label}: ${value}\n`;
+          }
+        }
+        
+        const subject = encodeURIComponent('Partnership Inquiry - Carry Our Products');
+        const body = encodeURIComponent(emailBody);
+        const mailtoLink = `mailto:web@stone-camp.com?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailtoLink;
+      });
+    });
+  </script>
+</body>
+</html>
