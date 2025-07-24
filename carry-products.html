@@ -336,7 +336,13 @@
       Partner with Stone Camp Distribution to bring premium spirits to your customers. We're looking for retailers, bars, restaurants, and distributors who share our commitment to quality and excellence. Our portfolio includes <span class="brand-name">Flair Spirits</span> and <span class="brand-name">Truce Spirits</span> - brands that embody the spirit of hard work and high-quality craftsmanship.
     </div>
 
-    <form class="contact-form" action="mailto:web@stone-camp.com" method="post" enctype="text/plain">
+    <form class="contact-form" name="carry-products" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <!-- Netlify bot protection -->
+      <input type="hidden" name="form-name" value="carry-products" />
+      <div style="display: none;">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </div>
+
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name <span class="required">*</span></label>
@@ -365,6 +371,11 @@
       </div>
 
       <button type="submit" class="submit-button">Get In Touch</button>
+
+      <!-- Success message (hidden by default) -->
+      <div id="success-message" style="display: none; background: rgba(142, 118, 84, 0.2); padding: 1rem; border-radius: 6px; margin-top: 1rem; border: 1px solid rgba(142, 118, 84, 0.3);">
+        <p style="margin: 0; color: #8e7654; font-weight: 600;">Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
+      </div>
     </form>
   </div>
 
