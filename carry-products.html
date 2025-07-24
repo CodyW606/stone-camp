@@ -336,12 +336,9 @@
       Partner with Stone Camp Distribution to bring premium spirits to your customers. We're looking for retailers, bars, restaurants, and distributors who share our commitment to quality and excellence. Our portfolio includes <span class="brand-name">Flair Spirits</span> and <span class="brand-name">Truce Spirits</span> - brands that embody the spirit of hard work and high-quality craftsmanship.
     </div>
 
-    <form class="contact-form" name="carry-products" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <!-- Netlify bot protection -->
+    <form class="contact-form" name="carry-products" method="POST" data-netlify="true" action="/carry-products/?success=true">
+      <!-- Netlify form detection -->
       <input type="hidden" name="form-name" value="carry-products" />
-      <div style="display: none;">
-        <label>Don't fill this out: <input name="bot-field" /></label>
-      </div>
 
       <div class="form-row">
         <div class="form-group">
@@ -394,27 +391,12 @@
         navMenu.classList.toggle('show');
       });
 
-      // Handle form submission
-      const form = document.querySelector('.contact-form');
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(form);
-        let emailBody = 'New Partnership Inquiry from Stone Camp Distribution Website:\n\n';
-        
-        for (let [key, value] of formData.entries()) {
-          if (value.trim()) {
-            const label = document.querySelector(`label[for="${key}"]`).textContent.replace(' *', '');
-            emailBody += `${label}: ${value}\n`;
-          }
-        }
-        
-        const subject = encodeURIComponent('Partnership Inquiry - Carry Our Products');
-        const body = encodeURIComponent(emailBody);
-        const mailtoLink = `mailto:web@stone-camp.com?subject=${subject}&body=${body}`;
-        
-        window.location.href = mailtoLink;
-      });
+      // Handle form submission success
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === 'true') {
+        document.getElementById('success-message').style.display = 'block';
+        document.querySelector('.contact-form').style.display = 'none';
+      }
     });
   </script>
 </body>
