@@ -395,7 +395,11 @@
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('success') === 'true') {
         document.getElementById('success-message').style.display = 'block';
-        document.querySelector('.contact-form').style.display = 'none';
+        // Hide only the form inputs, not the entire form container
+        const formElements = document.querySelectorAll('.form-group, .submit-button');
+        formElements.forEach(element => {
+          element.style.display = 'none';
+        });
       }
     });
   </script>
