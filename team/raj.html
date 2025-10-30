@@ -2,43 +2,48 @@
 <html>
 <head>
   <title>Raj - Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family:Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       margin: 0;
       font-family: 'Oswald', sans-serif;
-      background: 
-        linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
-        linear-gradient(to bottom, #2a2a2a, #1a1a1a);
-      background-size: 12px 12px, 12px 12px, 100% 100%;
+      background: #000000;
       color: white;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
     
     nav {
-      background: 
-        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        #8e7654;
-      background-size: 6px 6px;
-      padding: 0.8rem 2rem;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem 4rem;
       position: fixed;
-      width: calc(100% - 4rem);
+      width: 100%;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(142, 118, 84, 0.3);
     }
     
     .nav-logo {
-      height: 70px;
+      height: 65px;
       width: auto;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
     }
     
     nav ul {
@@ -46,55 +51,121 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2.5rem;
+      gap: 3rem;
+      align-items: center;
     }
     
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #db1f1a;
+      transition: width 0.3s ease;
     }
     
     nav a:hover {
       color: #db1f1a;
-      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
     }
 
+    nav a:hover::after {
+      width: 100%;
+    }
+    
     .menu-button {
       display: none;
       background: none;
       border: none;
       color: white;
-      font-size: 2rem;
+      font-size: 1.8rem;
       cursor: pointer;
       padding: 0;
     }
     
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 120px 20px 40px;
-      text-align: center;
+    /* PROFILE SECTION */
+    .profile-section {
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      padding: 140px 2rem 6rem;
+      min-height: 100vh;
+      position: relative;
     }
-    
+
+    .profile-section::before {
+      content: '';
+      position: absolute;
+      top: 85px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #8e7654, transparent);
+    }
+
+    .profile-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .profile-card {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #8e7654;
+      border-radius: 8px;
+      padding: 4rem 3rem;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #db1f1a, transparent);
+    }
+
+    .profile-image-wrapper {
+      width: 280px;
+      height: 280px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
     .profile-image {
-      width: 300px;
-      height: 300px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      margin: 2rem auto;
-      background: #333;
+      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1rem;
       color: #666;
       overflow: hidden;
-      border: 3px solid rgba(142, 118, 84, 0.3);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      border: 4px solid #8e7654;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 40px rgba(142, 118, 84, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+      border-color: #db1f1a;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 50px rgba(219, 31, 26, 0.4);
     }
 
     .profile-image img {
@@ -102,105 +173,179 @@
       height: 100%;
       object-fit: cover;
     }
-    
-    .name {
+
+    .profile-name {
       font-family: 'Bebas Neue', sans-serif;
       color: #db1f1a;
-      font-size: 4rem;
-      margin: 1rem 0;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-      letter-spacing: 3px;
+      font-size: 4.5rem;
+      margin: 1.5rem 0 0.5rem;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+      letter-spacing: 4px;
     }
-    
-    .title {
+
+    .profile-title {
       color: #8e7654;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      min-height: 2.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      min-height: 2rem;
     }
-    
-    .bio {
+
+    .profile-divider {
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #8e7654, transparent);
+      margin: 2rem auto;
+    }
+
+    .profile-bio {
+      font-family: 'Oswald', sans-serif;
       font-size: 1.3rem;
       line-height: 1.8;
-      margin: 2rem auto;
-      max-width: 600px;
-      text-align: left;
+      color: #d0d0d0;
       font-weight: 300;
+      max-width: 700px;
+      margin: 2rem auto;
+      font-style: italic;
     }
 
     .button-container {
-      margin: 3rem 0;
+      margin: 3rem 0 0;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    .cta-button {
+    .profile-button {
       display: inline-block;
-      padding: 1.2rem 2.5rem;
-      background: linear-gradient(135deg, #db1f1a, #a01510);
+      padding: 1.2rem 3rem;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s;
+      font-family: 'Oswald', sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
+      letter-spacing: 2px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .email-button {
+      background: transparent;
+      border: 2px solid #db1f1a;
+      color: #db1f1a;
+    }
+
+    .email-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #db1f1a;
+      transition: left 0.4s ease;
+      z-index: -1;
+    }
+
+    .email-button:hover::before {
+      left: 0;
+    }
+
+    .email-button:hover {
+      color: white;
     }
 
     .back-button {
-      display: inline-block;
-      padding: 1.2rem 2.5rem;
-      background: linear-gradient(135deg, #8e7654, #6d5c41);
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 6px 15px rgba(142, 118, 84, 0.3);
+      background: transparent;
+      border: 2px solid #8e7654;
+      color: #8e7654;
     }
 
-    .cta-button:hover, .back-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    .back-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #8e7654;
+      transition: left 0.4s ease;
+      z-index: -1;
     }
 
-    .footer {
-      position: fixed;
-      bottom: 0;
+    .back-button:hover::before {
       left: 0;
+    }
+
+    .back-button:hover {
+      color: #000;
+    }
+
+    /* FOOTER */
+    .footer {
       background: #000000;
-      padding: 10px 20px;
-      z-index: 100;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(142, 118, 84, 0.3);
     }
 
     .social-link {
       color: #db1f1a;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
     }
 
     .social-link:hover {
       color: #8e7654;
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px) {
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .profile-section {
+        padding: 120px 2rem 4rem;
+      }
+
+      .profile-card {
+        padding: 3rem 2rem;
+      }
+
+      .profile-image-wrapper {
+        width: 240px;
+        height: 240px;
+      }
+
+      .profile-name {
+        font-size: 3.5rem;
+      }
+
+      .profile-title {
+        font-size: 1.5rem;
+      }
+
+      .profile-bio {
+        font-size: 1.2rem;
+      }
     }
 
     @media (max-width: 768px) {
       nav {
-        padding: 0.5rem 1rem;
-        width: calc(100% - 2rem);
+        padding: 0.8rem 1.5rem;
       }
 
       .nav-logo {
@@ -209,59 +354,84 @@
 
       .menu-button {
         display: block !important;
-        z-index: 1000;
+        z-index: 1001;
       }
 
       nav ul {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         width: 100%;
-        background: #db1f1a;
-        padding: 20px 0;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem 0;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(142, 118, 84, 0.3);
       }
 
       nav ul.show {
         display: flex;
       }
 
-      nav ul a {
-        color: white;
+      .profile-section {
+        padding: 110px 1.5rem 3rem;
       }
 
-      nav ul a:hover {
-        color: #8e7654;
+      .profile-card {
+        padding: 2.5rem 1.5rem;
       }
 
-      .content {
-        padding-top: 100px;
-      }
-
-      .profile-image {
+      .profile-image-wrapper {
         width: 200px;
         height: 200px;
       }
 
-      .name {
-        font-size: 2.5rem;
+      .profile-name {
+        font-size: 3rem;
       }
 
-      .title {
-        font-size: 1.5rem;
+      .profile-title {
+        font-size: 1.3rem;
       }
 
-      .bio {
+      .profile-bio {
         font-size: 1.1rem;
-        padding: 0 1rem;
       }
 
       .button-container {
         flex-direction: column;
         align-items: center;
+      }
+
+      .profile-button {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-image-wrapper {
+        width: 180px;
+        height: 180px;
+      }
+
+      .profile-name {
+        font-size: 2.5rem;
+      }
+
+      .profile-title {
+        font-size: 1.2rem;
+      }
+
+      .profile-bio {
+        font-size: 1rem;
+      }
+
+      .profile-card {
+        padding: 2rem 1rem;
       }
     }
   </style>
@@ -275,31 +445,47 @@
     <ul>
       <li><a href="../index.html">Home</a></li>
       <li><a href="../about.html">About</a></li>
-      <li><a href="../mission.html">Mission</a></li>
-      <li><a href="../values.html">Values</a></li>
-      <li><a href="../vision.html">Vision</a></li>
       <li><a href="../team.html">Team</a></li>
+      <li><a href="../carry-products.html">Carry Our Products</a></li>
     </ul>
   </nav>
   
-  <div class="content">
-    <div class="profile-image">
-      <img src="../images/raj.jpg" alt="Raj" onerror="this.style.display='none';this.parentElement.innerHTML=''">
+  <!-- PROFILE SECTION -->
+  <section class="profile-section">
+    <div class="profile-wrapper">
+      <div class="profile-card">
+        <div class="profile-image-wrapper">
+          <div class="profile-image">
+            <img src="../images/raj.jpg" alt="Raj" onerror="this.style.display='none';this.parentElement.innerHTML='Photo Coming Soon'">
+          </div>
+        </div>
+        
+        <h1 class="profile-name">RAJ</h1>
+        <div class="profile-title">Team Member</div>
+        
+        <div class="profile-divider"></div>
+        
+        <div class="profile-bio">
+          Bio coming soon
+        </div>
+        
+        <div class="button-container">
+          <a href="mailto:raj@stone-camp.com" class="profile-button email-button">
+            <i class="fas fa-envelope"></i> Email Raj
+          </a>
+          <a href="../team.html" class="profile-button back-button">
+            <i class="fas fa-arrow-left"></i> Back to Team
+          </a>
+        </div>
+      </div>
     </div>
-    <h1 class="name">Raj</h1>
-    <div class="title"></div>
-    <div class="bio">Bio coming soon</div>
-    <div class="button-container">
-      <a href="mailto:raj@stone-camp.com" class="cta-button">Email Raj</a>
-      <a href="../team.html" class="back-button">Back to Team</a>
-    </div>
-  </div>
+  </section>
 
-  <div class="footer">
+  <footer class="footer">
     <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
       <i class="fab fa-facebook"></i>
     </a>
-  </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
