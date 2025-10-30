@@ -2,43 +2,48 @@
 <html>
 <head>
   <title>Carry Our Products - Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       margin: 0;
       font-family: 'Oswald', sans-serif;
-      background: 
-        linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.01) 25%, transparent 25%),
-        linear-gradient(to bottom, #2a2a2a, #1a1a1a);
-      background-size: 12px 12px, 12px 12px, 100% 100%;
+      background: #000000;
       color: white;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
     
     nav {
-      background: 
-        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        #8e7654;
-      background-size: 6px 6px;
-      padding: 0.8rem 2rem;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem 4rem;
       position: fixed;
-      width: calc(100% - 4rem);
+      width: 100%;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(142, 118, 84, 0.3);
     }
     
     .nav-logo {
-      height: 70px;
+      height: 65px;
       width: auto;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
     }
     
     nav ul {
@@ -46,83 +51,179 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2.5rem;
+      gap: 3rem;
+      align-items: center;
     }
     
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #db1f1a;
+      transition: width 0.3s ease;
     }
     
     nav a:hover {
       color: #db1f1a;
-      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
     }
 
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: #db1f1a;
+    }
+    
     .menu-button {
       display: none;
       background: none;
       border: none;
       color: white;
-      font-size: 2rem;
+      font-size: 1.8rem;
       cursor: pointer;
       padding: 0;
     }
     
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 120px 20px 40px;
-      text-align: center;
-    }
-    
-    .logo {
-      max-width: 60%;
-      height: auto;
-      margin: 2rem auto;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    /* HERO SECTION */
+    .hero-section {
+      position: relative;
+      height: 50vh;
+      min-height: 400px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      margin-top: 85px;
     }
 
-    h1 {
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .hero-title {
       font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1.1;
+      letter-spacing: 4px;
+      color: white;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .hero-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       color: #8e7654;
-      margin-bottom: 2rem;
-      font-size: 3rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      letter-spacing: 2px;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease forwards 0.2s;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* CONTENT SECTION */
+    .content-section {
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    .content-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #8e7654, transparent);
+    }
+
+    .content-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .company-logo {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(142, 118, 84, 0.4));
     }
 
     .intro-text {
+      font-family: 'Oswald', sans-serif;
       font-size: 1.3rem;
-      line-height: 1.8;
-      margin: 3rem auto;
-      text-align: left;
+      line-height: 1.9;
+      color: #e0e0e0;
       font-weight: 300;
-      background: rgba(0,0,0,0.2);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid rgba(142, 118, 84, 0.2);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 3rem;
+      border-left: 3px solid #8e7654;
+      margin-bottom: 4rem;
     }
 
     .brand-name {
       color: #db1f1a;
-      font-weight: bold;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
-    .contact-form {
-      background: rgba(0,0,0,0.2);
-      padding: 2rem;
+    /* FORM SECTION */
+    .form-container {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 3rem;
+      border: 2px solid #8e7654;
       border-radius: 8px;
-      margin: 2rem auto;
-      border: 1px solid rgba(142, 118, 84, 0.2);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      text-align: left;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: #8e7654;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
     }
 
     .form-group {
@@ -133,8 +234,8 @@
       display: block;
       margin-bottom: 0.5rem;
       color: #8e7654;
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 500;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -143,14 +244,14 @@
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 0.8rem;
-      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
       border: 1px solid rgba(142, 118, 84, 0.3);
       border-radius: 4px;
       color: white;
       font-family: 'Oswald', sans-serif;
       font-size: 1rem;
-      box-sizing: border-box;
+      transition: all 0.3s ease;
     }
 
     .form-group input:focus,
@@ -158,12 +259,13 @@
     .form-group textarea:focus {
       outline: none;
       border-color: #db1f1a;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 10px rgba(219, 31, 26, 0.2);
     }
 
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
     }
 
     .form-group select {
@@ -171,76 +273,135 @@
     }
 
     .form-group select option {
-      background: #2a2a2a;
+      background: #1a1a1a;
       color: white;
     }
 
     .form-group textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 150px;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .submit-button {
       width: 100%;
-      padding: 1.2rem 2.5rem;
-      background: linear-gradient(135deg, #db1f1a, #a01510);
-      color: white;
-      border: none;
-      border-radius: 6px;
+      padding: 1.3rem 3rem;
+      background: transparent;
+      color: #8e7654;
+      border: 2px solid #8e7654;
+      border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
       font-size: 1.2rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
+      transition: all 0.4s ease;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-family: 'Oswald', sans-serif;
+      letter-spacing: 2px;
       margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #8e7654;
+      transition: left 0.4s ease;
+      z-index: -1;
+    }
+
+    .submit-button:hover::before {
+      left: 0;
     }
 
     .submit-button:hover {
-      background: linear-gradient(135deg, #8e7654, #6d5c41);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      color: #000;
+      border-color: #8e7654;
     }
 
     .required {
       color: #db1f1a;
     }
 
+    .success-message {
+      background: rgba(142, 118, 84, 0.2);
+      padding: 2rem;
+      border-radius: 6px;
+      border: 2px solid #8e7654;
+      text-align: center;
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .success-message p {
+      margin: 0;
+      color: #8e7654;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    /* FOOTER */
     .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
       background: #000000;
-      padding: 10px 20px;
-      z-index: 100;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(142, 118, 84, 0.3);
     }
 
     .social-link {
       color: #db1f1a;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
     }
 
     .social-link:hover {
       color: #8e7654;
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px) {
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .hero-title {
+        font-size: 4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .content-section {
+        padding: 4rem 2rem;
+      }
+
+      .intro-text {
+        font-size: 1.2rem;
+        padding: 2.5rem;
+      }
+
+      .form-container {
+        padding: 2.5rem;
+      }
     }
 
     @media (max-width: 768px) {
       nav {
-        padding: 0.5rem 1rem;
-        width: calc(100% - 2rem);
+        padding: 0.8rem 1.5rem;
       }
 
       .nav-logo {
@@ -249,53 +410,59 @@
 
       .menu-button {
         display: block !important;
-        z-index: 1000;
+        z-index: 1001;
       }
 
       nav ul {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         width: 100%;
-        background: #db1f1a;
-        padding: 20px 0;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem 0;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(142, 118, 84, 0.3);
       }
 
       nav ul.show {
         display: flex;
       }
 
-      nav ul a {
-        color: white;
+      .hero-section {
+        min-height: 350px;
       }
 
-      nav ul a:hover {
-        color: #8e7654;
+      .hero-title {
+        font-size: 3rem;
       }
 
-      .content {
-        padding-top: 100px;
+      .hero-subtitle {
+        font-size: 1rem;
       }
 
-      .logo {
-        max-width: 80%;
+      .content-section {
+        padding: 3rem 1.5rem;
       }
 
-      h1 {
-        font-size: 2.5rem;
+      .company-logo {
+        max-width: 280px;
       }
 
       .intro-text {
         font-size: 1.1rem;
-        padding: 1.5rem;
+        padding: 2rem;
       }
 
-      .contact-form {
-        padding: 1.5rem;
+      .form-container {
+        padding: 2rem;
+      }
+
+      .form-title {
+        font-size: 2rem;
       }
 
       .form-row {
@@ -309,6 +476,29 @@
         font-size: 16px; /* Prevents zoom on iOS */
       }
     }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .content-section {
+        padding: 2rem 1rem;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+        padding: 1.5rem;
+      }
+
+      .form-container {
+        padding: 1.5rem;
+      }
+
+      .form-title {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -320,67 +510,80 @@
     <ul>
       <li><a href="./index.html">Home</a></li>
       <li><a href="./about.html">About</a></li>
-      <li><a href="./mission.html">Mission</a></li>
-      <li><a href="./values.html">Values</a></li>
-      <li><a href="./vision.html">Vision</a></li>
       <li><a href="./team.html">Team</a></li>
       <li><a href="./carry-products.html" class="active">Carry Our Products</a></li>
     </ul>
   </nav>
   
-  <div class="content">
-    <img src="images/logo.png" alt="Stone Camp Distribution" class="logo">
-    <h1>Carry Our Products</h1>
-    
-    <div class="intro-text">
-      Partner with Stone Camp Distribution to bring premium spirits to your customers. We're looking for retailers, bars, restaurants, and distributors who share our commitment to quality and excellence. Our portfolio includes <span class="brand-name">Flair Spirits</span> and <span class="brand-name">Truce Spirits</span> - brands that embody the spirit of hard work and high-quality craftsmanship.
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">PARTNER<br>WITH US</h1>
+      <p class="hero-subtitle">Bring Premium Spirits to Your Customers</p>
     </div>
+  </section>
 
-    <form class="contact-form" name="carry-products" method="POST" data-netlify="true" action="/carry-products/?success=true">
-      <!-- Netlify form detection -->
-      <input type="hidden" name="form-name" value="carry-products" />
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Name <span class="required">*</span></label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email <span class="required">*</span></label>
-          <input type="email" id="email" name="email" required>
-        </div>
+  <!-- CONTENT SECTION -->
+  <section class="content-section">
+    <div class="content-wrapper">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Stone Camp Distribution" class="company-logo">
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="businessName">Business Name <span class="required">*</span></label>
-          <input type="text" id="businessName" name="businessName" required>
+      <div class="intro-text">
+        Partner with Stone Camp Distribution to bring premium spirits to your customers. We're looking for retailers, bars, restaurants, and distributors who share our commitment to quality and excellence. Our portfolio includes <span class="brand-name">Flair Spirits</span> — brands that embody the spirit of hard work and high-quality craftsmanship.
+      </div>
+
+      <div class="form-container">
+        <h2 class="form-title">Get In Touch</h2>
+        
+        <form name="carry-products" method="POST" data-netlify="true" action="/carry-products/?success=true">
+          <!-- Netlify form detection -->
+          <input type="hidden" name="form-name" value="carry-products" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="businessName">Business Name <span class="required">*</span></label>
+              <input type="text" id="businessName" name="businessName" required>
+            </div>
+            <div class="form-group">
+              <label for="location">Location <span class="required">*</span></label>
+              <input type="text" id="location" name="location" placeholder="City, State" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your business and interest in our products</label>
+            <textarea id="message" name="message" placeholder="Business type, location details, which products interest you, volume expectations, etc..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Submit Inquiry</button>
+        </form>
+
+        <!-- Success message (hidden by default) -->
+        <div id="success-message" class="success-message" style="display: none;">
+          <p>✓ Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
         </div>
-        <div class="form-group">
-          <label for="location">Location <span class="required">*</span></label>
-          <input type="text" id="location" name="location" placeholder="City, State" required>
-        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="form-group">
-        <label for="message">Tell us about your business and interest in our products</label>
-        <textarea id="message" name="message" placeholder="Business type, location details, which products interest you, volume expectations, etc..."></textarea>
-      </div>
-
-      <button type="submit" class="submit-button">Get In Touch</button>
-
-      <!-- Success message (hidden by default) -->
-      <div id="success-message" style="display: none; background: rgba(142, 118, 84, 0.2); padding: 1rem; border-radius: 6px; margin-top: 1rem; border: 1px solid rgba(142, 118, 84, 0.3);">
-        <p style="margin: 0; color: #8e7654; font-weight: 600;">Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
-      </div>
-    </form>
-  </div>
-
-  <div class="footer">
+  <footer class="footer">
     <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
       <i class="fab fa-facebook"></i>
     </a>
-  </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -395,11 +598,8 @@
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('success') === 'true') {
         document.getElementById('success-message').style.display = 'block';
-        // Hide only the form inputs, not the entire form container
-        const formElements = document.querySelectorAll('.form-group, .submit-button');
-        formElements.forEach(element => {
-          element.style.display = 'none';
-        });
+        document.querySelector('form[name="carry-products"]').style.display = 'none';
+        document.querySelector('.form-title').style.display = 'none';
       }
     });
   </script>
