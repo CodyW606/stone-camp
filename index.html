@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Oswald', sans-serif;
@@ -23,7 +27,7 @@
       background-size: 6px 6px;
       padding: 0.8rem 2rem;
       position: fixed;
-      width: calc(100% - 4rem);
+      width: 100%;
       top: 0;
       z-index: 100;
       box-shadow: 0 4px 15px rgba(0,0,0,0.4);
@@ -72,9 +76,13 @@
     }
     
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       position: relative;
       overflow: hidden;
+      padding-bottom: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .hero-image {
@@ -84,125 +92,207 @@
       position: absolute;
       top: 0;
       left: 0;
+      opacity: 0.3;
     }
     
     .hero-content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      text-align: center;
-      padding: 120px 1rem 1rem;
+      padding: 120px 2rem 2rem;
+      max-width: 1200px;
+      width: 100%;
     }
     
-    .hero-box {
-      opacity: 0;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 3rem;
-      border-radius: 12px;
-      width: 700px;
-      height: 400px;
-      margin: 0 auto;
-      transition: opacity 0.5s ease;
-      border: 2px solid rgba(142, 118, 84, 0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 140px;
-      pointer-events: none;
-    }
-    
-    .hero-box.active {
-      opacity: 1;
-      animation: fadeIn 1s forwards;
-      pointer-events: auto;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .slide-image {
-      width: 300px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem auto;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    .main-box {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 4rem 3rem;
+      border-radius: 20px;
+      border: 3px solid #8e7654;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(142, 118, 84, 0.3);
+      position: relative;
+      overflow: hidden;
     }
 
-    .vertical-image {
-      width: 200px;
+    .main-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        #db1f1a 25%, 
+        #8e7654 50%, 
+        #db1f1a 75%, 
+        transparent 100%
+      );
+    }
+
+    .main-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        #db1f1a 25%, 
+        #8e7654 50%, 
+        #db1f1a 75%, 
+        transparent 100%
+      );
+    }
+    
+    .flair-logo {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1.5rem;
+      filter: drop-shadow(0 8px 16px rgba(219, 31, 26, 0.4));
+      animation: fadeInScale 1s ease-out;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .now-available {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #db1f1a, #ff4438, #db1f1a);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 1rem 0 2rem;
+      text-shadow: none;
+      letter-spacing: 4px;
+      animation: shimmer 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .divider {
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #8e7654, transparent);
+      margin: 2.5rem auto;
+    }
+
+    .company-section {
+      margin-top: 2rem;
+    }
+
+    .company-logo {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1.5rem;
+      filter: drop-shadow(0 4px 12px rgba(142, 118, 84, 0.5));
     }
     
     .tagline {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: #8e7654;
-      margin: 1rem 0;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-      letter-spacing: 2px;
-    }
-
-    .coming-soon {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      color: #db1f1a;
-      margin: 1rem 0;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-      font-weight: 700;
-    }
-
-    .brand-subtitle {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.8rem;
-      color: #8e7654;
-      margin: 0.5rem 0;
-      font-weight: 300;
-      letter-spacing: 1px;
+      margin: 1rem 0 1.5rem;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+      letter-spacing: 3px;
     }
     
     .description {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.3rem;
-      line-height: 1.6;
-      color: #fff;
-      margin: 1rem auto;
-      max-width: 600px;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: #e0e0e0;
+      margin: 1.5rem auto;
+      max-width: 700px;
       font-weight: 300;
+    }
+
+    .cta-container {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
     }
     
     .cta-button {
-      margin: 1.5rem auto 0;
-      padding: 1.2rem 2.5rem;
+      padding: 1.3rem 3rem;
       background: linear-gradient(135deg, #db1f1a, #a01510);
       color: white !important;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1.2rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
-      width: fit-content;
-      box-shadow: 0 6px 15px rgba(219, 31, 26, 0.3);
+      box-shadow: 0 6px 20px rgba(219, 31, 26, 0.4);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       position: relative;
-      z-index: 10;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .cta-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .cta-button span {
+      position: relative;
+      z-index: 1;
     }
     
     .cta-button:hover {
       background: linear-gradient(135deg, #8e7654, #6d5c41);
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .cta-button.secondary {
+      background: linear-gradient(135deg, #8e7654, #6d5c41);
+    }
+
+    .cta-button.secondary:hover {
+      background: linear-gradient(135deg, #db1f1a, #a01510);
     }
 
     .footer {
@@ -217,21 +307,47 @@
     .social-link {
       color: #db1f1a;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
     }
 
     .social-link:hover {
       color: #8e7654;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 968px) {
+      .main-box {
+        padding: 3rem 2rem;
+      }
+
+      .flair-logo {
+        max-width: 400px;
+      }
+
+      .company-logo {
+        max-width: 280px;
+      }
+
+      .now-available {
+        font-size: 3rem;
+      }
+
+      .tagline {
+        font-size: 2.3rem;
+      }
+
+      .description {
+        font-size: 1.2rem;
+      }
     }
 
     @media (max-width: 768px) {
       nav {
         padding: 0.5rem 1rem;
-        width: calc(100% - 2rem);
       }
 
       .nav-logo {
@@ -268,40 +384,70 @@
         color: #8e7654;
       }
 
-      .hero-box {
-        width: 85%;
-        height: 350px;
-        padding: 20px;
-        margin-top: 60px;
+      .hero-content {
+        padding: 100px 1rem 1rem;
       }
 
-      .slide-image {
-        width: 200px;
+      .main-box {
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
       }
 
-      .vertical-image {
-        width: 150px;
+      .flair-logo {
+        max-width: 300px;
+      }
+
+      .company-logo {
+        max-width: 220px;
+      }
+
+      .now-available {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
       }
 
       .tagline {
-        font-size: 2.5rem;
-      }
-
-      .coming-soon {
-        font-size: 2.8rem;
-      }
-
-      .brand-subtitle {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
+        letter-spacing: 1px;
       }
 
       .description {
         font-size: 1.1rem;
+        line-height: 1.6;
       }
 
-      .hero-content {
-        padding: 100px 1rem 1rem;
-        justify-content: flex-start;
+      .cta-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .cta-button {
+        padding: 1.1rem 2.5rem;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .divider {
+        margin: 2rem auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .now-available {
+        font-size: 2rem;
+      }
+
+      .tagline {
+        font-size: 1.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+
+      .main-box {
+        padding: 1.5rem 1rem;
       }
     }
   </style>
@@ -315,9 +461,6 @@
     <ul>
       <li><a href="./index.html" class="active">Home</a></li>
       <li><a href="./about.html">About</a></li>
-      <li><a href="./mission.html">Mission</a></li>
-      <li><a href="./values.html">Values</a></li>
-      <li><a href="./vision.html">Vision</a></li>
       <li><a href="./team.html">Team</a></li>
       <li><a href="./carry-products.html">Carry Our Products</a></li>
     </ul>
@@ -326,23 +469,31 @@
   <div class="hero">
     <img src="images/redrobin.jpg" alt="Background" class="hero-image">
     <div class="hero-content">
-      <div class="hero-box active" id="slide1">
-        <img src="images/logo.png" alt="Stone Camp Distribution" class="slide-image">
-        <div class="tagline">Where Hard Work Meets High Spirits</div>
-        <p class="description">We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.</p>
-        <a href="mailto:sales@stone-camp.com" class="cta-button">Contact Us</a>
-      </div>
-      
-      <div class="hero-box" id="slide2">
-        <div class="coming-soon">FLAIR SPIRITS</div>
-        <div class="brand-subtitle">Coming Soon</div>
-        <a href="https://www.flairspirits.com" target="_blank" class="cta-button">Visit the Official Website!</a>
-      </div>
-      
-      <div class="hero-box" id="slide3">
-        <div class="coming-soon">TRUCE SPIRITS</div>
-        <div class="brand-subtitle">Coming Soon</div>
-        <a href="mailto:sales@stone-camp.com" class="cta-button">Contact Us</a>
+      <div class="main-box">
+        
+        <img src="images/flairspirits.png" alt="Flair Spirits" class="flair-logo">
+        <div class="now-available">NOW AVAILABLE!!!</div>
+        
+        <div class="cta-container">
+          <a href="https://www.flairspirits.com" target="_blank" class="cta-button">
+            <span>Visit Flair Spirits</span>
+          </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="company-section">
+          <img src="images/logo.png" alt="Stone Camp Distribution" class="company-logo">
+          <div class="tagline">Where Hard Work Meets High Spirits</div>
+          <p class="description">We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.</p>
+          
+          <div class="cta-container">
+            <a href="mailto:sales@stone-camp.com" class="cta-button secondary">
+              <span>Contact Us</span>
+            </a>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -355,24 +506,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const slides = document.querySelectorAll('.hero-box');
-      let currentSlide = 0;
-
-      function showSlide(index) {
-        slides.forEach(slide => {
-          slide.classList.remove('active');
-        });
-        slides[index].classList.add('active');
-      }
-
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }
-
-      showSlide(0);
-      setInterval(nextSlide, 5000);
-
       const menuButton = document.querySelector('.menu-button');
       const navMenu = document.querySelector('nav ul');
       
