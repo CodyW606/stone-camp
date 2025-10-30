@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Stone Camp Distribution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Stone Camp Distribution - Premium Spirits</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       margin: 0;
       font-family: 'Oswald', sans-serif;
-      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+      background: #000000;
       color: white;
-      text-align: center;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
     
     nav {
-      background: 
-        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        #8e7654;
-      background-size: 6px 6px;
-      padding: 0.8rem 2rem;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem 4rem;
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(142, 118, 84, 0.3);
     }
     
     .nav-logo {
-      height: 70px;
+      height: 65px;
       width: auto;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
     }
     
     nav ul {
@@ -47,22 +51,38 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 2.5rem;
+      gap: 3rem;
+      align-items: center;
     }
     
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       text-transform: uppercase;
-      transition: all 0.3s;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 1.5px;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #db1f1a;
+      transition: width 0.3s ease;
     }
     
     nav a:hover {
       color: #db1f1a;
-      text-shadow: 0 2px 4px rgba(219, 31, 26, 0.5);
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
     
     .menu-button {
@@ -70,136 +90,372 @@
       background: none;
       border: none;
       color: white;
-      font-size: 2rem;
+      font-size: 1.8rem;
       cursor: pointer;
       padding: 0;
     }
     
-    .hero {
-      min-height: 100vh;
+    /* HERO SECTION */
+    .hero-section {
       position: relative;
+      height: 100vh;
+      min-height: 700px;
+      width: 100%;
       overflow: hidden;
-      padding-bottom: 60px;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
-    
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+
+    .hero-background {
       position: absolute;
       top: 0;
       left: 0;
-      opacity: 0.3;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
     }
-    
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, 
+        rgba(0,0,0,0.7) 0%, 
+        rgba(0,0,0,0.5) 50%, 
+        rgba(0,0,0,0.3) 100%
+      );
+    }
+
     .hero-content {
       position: relative;
-      z-index: 2;
-      padding: 120px 2rem 2rem;
-      max-width: 1200px;
+      z-index: 10;
       width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
     }
-    
-    .main-box {
-      background: rgba(0, 0, 0, 0.9);
-      padding: 4rem 3rem;
-      border-radius: 20px;
-      border: 3px solid #8e7654;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(142, 118, 84, 0.3);
+
+    .hero-left {
+      flex: 1;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8e7654;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5.5rem;
+      line-height: 1;
+      letter-spacing: 2px;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.4s;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero-awards {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #f0f0f0;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-awards strong {
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    .hero-description {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #e0e0e0;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.8s;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 1s;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 3rem;
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 0;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
       position: relative;
       overflow: hidden;
     }
 
-    .main-box::before {
+    .hero-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: white;
+      transition: left 0.4s ease;
+      z-index: -1;
+    }
+
+    .hero-button:hover::before {
+      left: 0;
+    }
+
+    .hero-button:hover {
+      color: #000;
+      border-color: white;
+    }
+
+    .hero-button i {
+      transition: transform 0.3s ease;
+    }
+
+    .hero-button:hover i {
+      transform: translateX(5px);
+    }
+
+    .hero-right {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      animation: fadeInRight 1s ease forwards 0.6s;
+    }
+
+    .hero-logo-container {
+      text-align: center;
+    }
+
+    .hero-logo {
+      width: 350px;
+      height: auto;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.7));
+    }
+
+    .hero-badge {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      border-top: 2px solid #8e7654;
+      border-bottom: 2px solid #8e7654;
+    }
+
+    .hero-badge-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: white;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* PRODUCT SHOWCASE SECTION */
+    .product-section {
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      padding: 8rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-section::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        #db1f1a 25%, 
-        #8e7654 50%, 
-        #db1f1a 75%, 
-        transparent 100%
-      );
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #8e7654, transparent);
     }
 
-    .main-box::after {
-      content: '';
+    .product-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6rem;
+      text-align: center;
+      color: #db1f1a;
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 15px rgba(219, 31, 26, 0.5);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .product-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      color: #8e7654;
+      margin-bottom: 5rem;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    .product-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      padding: 0 2rem;
+    }
+
+    .product-card {
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-20px);
+    }
+
+    .product-card a {
+      display: block;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .product-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: radial-gradient(circle at center, rgba(142, 118, 84, 0.1), transparent);
+      padding: 2rem;
+      transition: all 0.5s ease;
+    }
+
+    .product-card:hover .product-image-wrapper {
+      background: radial-gradient(circle at center, rgba(142, 118, 84, 0.2), transparent);
+      box-shadow: 0 20px 60px rgba(142, 118, 84, 0.3);
+    }
+
+    .product-image {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.7));
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+      filter: drop-shadow(0 15px 40px rgba(219, 31, 26, 0.4));
+    }
+
+    .product-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        #db1f1a 25%, 
-        #8e7654 50%, 
-        #db1f1a 75%, 
-        transparent 100%
-      );
-    }
-    
-    .flair-logo {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1.5rem;
-      filter: drop-shadow(0 8px 16px rgba(219, 31, 26, 0.4));
-      animation: fadeInScale 1s ease-out;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 2rem 1rem;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
-    @keyframes fadeInScale {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+    .product-card:hover .product-overlay {
+      opacity: 1;
     }
 
-    .now-available {
+    .product-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem;
-      background: linear-gradient(135deg, #db1f1a, #ff4438, #db1f1a);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin: 1rem 0 2rem;
-      text-shadow: none;
-      letter-spacing: 4px;
-      animation: shimmer 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+      font-size: 2rem;
+      color: white;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-cta {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      color: #8e7654;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* COMPANY SECTION */
+    .content-section {
+      background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+      padding: 6rem 4rem;
       position: relative;
     }
 
-    @keyframes shimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-    }
-
-    .divider {
-      width: 80%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #8e7654, transparent);
-      margin: 2.5rem auto;
-    }
-
-    .company-section {
-      margin-top: 2rem;
+    .company-box {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 4rem 3rem;
+      border-radius: 0;
+      border: 2px solid #8e7654;
+      text-align: center;
     }
 
     .company-logo {
@@ -207,107 +463,83 @@
       max-width: 350px;
       height: auto;
       display: block;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto 2rem;
       filter: drop-shadow(0 4px 12px rgba(142, 118, 84, 0.5));
     }
-    
-    .tagline {
+
+    .company-tagline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 3rem;
       color: #8e7654;
-      margin: 1rem 0 1.5rem;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+      margin: 1.5rem 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
       letter-spacing: 3px;
     }
-    
-    .description {
+
+    .company-description {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       line-height: 1.8;
       color: #e0e0e0;
-      margin: 1.5rem auto;
-      max-width: 700px;
+      margin: 2rem auto;
+      max-width: 800px;
       font-weight: 300;
     }
 
-    .cta-container {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+    .company-cta {
       margin-top: 2.5rem;
     }
-    
-    .cta-button {
-      padding: 1.3rem 3rem;
-      background: linear-gradient(135deg, #db1f1a, #a01510);
-      color: white !important;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      font-weight: 600;
+
+    .company-button {
+      padding: 1.2rem 3rem;
+      background: transparent;
+      color: #8e7654;
+      border: 2px solid #8e7654;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 6px 20px rgba(219, 31, 26, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
       position: relative;
       overflow: hidden;
     }
 
-    .cta-button::before {
+    .company-button::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #8e7654;
+      transition: left 0.4s ease;
+      z-index: -1;
     }
 
-    .cta-button:hover::before {
-      width: 300px;
-      height: 300px;
+    .company-button:hover::before {
+      left: 0;
     }
 
-    .cta-button span {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .cta-button:hover {
-      background: linear-gradient(135deg, #8e7654, #6d5c41);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .cta-button.secondary {
-      background: linear-gradient(135deg, #8e7654, #6d5c41);
-    }
-
-    .cta-button.secondary:hover {
-      background: linear-gradient(135deg, #db1f1a, #a01510);
+    .company-button:hover {
+      color: #000;
+      border-color: #8e7654;
     }
 
     .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
       background: #000000;
-      padding: 10px 20px;
-      z-index: 100;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(142, 118, 84, 0.3);
     }
 
     .social-link {
       color: #db1f1a;
       text-decoration: none;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -319,35 +551,83 @@
       transform: scale(1.1);
     }
 
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .hero-content {
+        padding: 0 3rem;
+      }
+
+      .hero-title {
+        font-size: 4.5rem;
+      }
+
+      .hero-logo {
+        width: 300px;
+      }
+
+      .product-grid {
+        gap: 3rem;
+      }
+    }
+
     @media (max-width: 968px) {
-      .main-box {
-        padding: 3rem 2rem;
+      nav {
+        padding: 1rem 2rem;
       }
 
-      .flair-logo {
-        max-width: 400px;
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 3rem;
       }
 
-      .company-logo {
-        max-width: 280px;
+      .hero-left {
+        max-width: 100%;
       }
 
-      .now-available {
-        font-size: 3rem;
+      .hero-title {
+        font-size: 4rem;
       }
 
-      .tagline {
-        font-size: 2.3rem;
-      }
-
-      .description {
+      .hero-awards {
         font-size: 1.2rem;
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+      }
+
+      .hero-logo {
+        width: 280px;
+      }
+
+      .product-section {
+        padding: 6rem 2rem;
+      }
+
+      .product-title {
+        font-size: 4.5rem;
+      }
+
+      .product-subtitle {
+        font-size: 1.6rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        padding: 0 1rem;
+      }
+
+      .content-section {
+        padding: 4rem 2rem;
       }
     }
 
     @media (max-width: 768px) {
       nav {
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1.5rem;
       }
 
       .nav-logo {
@@ -356,98 +636,111 @@
 
       .menu-button {
         display: block !important;
-        z-index: 1000;
+        z-index: 1001;
       }
 
       nav ul {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         width: 100%;
-        background: #db1f1a;
-        padding: 20px 0;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem 0;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(142, 118, 84, 0.3);
       }
 
       nav ul.show {
         display: flex;
       }
 
-      nav ul a {
-        color: white;
+      .hero-section {
+        min-height: 600px;
       }
 
-      nav ul a:hover {
-        color: #8e7654;
+      .hero-title {
+        font-size: 3rem;
       }
 
-      .hero-content {
-        padding: 100px 1rem 1rem;
+      .hero-eyebrow {
+        font-size: 0.95rem;
       }
 
-      .main-box {
-        padding: 2rem 1.5rem;
-        border-radius: 15px;
-      }
-
-      .flair-logo {
-        max-width: 300px;
-      }
-
-      .company-logo {
-        max-width: 220px;
-      }
-
-      .now-available {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-      }
-
-      .tagline {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-      }
-
-      .description {
+      .hero-awards {
         font-size: 1.1rem;
-        line-height: 1.6;
       }
 
-      .cta-container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .cta-button {
-        padding: 1.1rem 2.5rem;
+      .hero-description {
         font-size: 1.1rem;
+      }
+
+      .hero-logo {
+        width: 240px;
+      }
+
+      .hero-button {
         width: 100%;
         max-width: 300px;
+        justify-content: center;
       }
 
-      .divider {
-        margin: 2rem auto;
+      .product-title {
+        font-size: 3.5rem;
+      }
+
+      .product-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 3rem;
+      }
+
+      .company-box {
+        padding: 3rem 2rem;
+      }
+
+      .company-tagline {
+        font-size: 2.2rem;
+      }
+
+      .company-description {
+        font-size: 1.1rem;
       }
     }
 
     @media (max-width: 480px) {
-      .now-available {
-        font-size: 2rem;
+      .hero-title {
+        font-size: 2.5rem;
       }
 
-      .tagline {
-        font-size: 1.5rem;
-      }
-
-      .description {
+      .hero-awards {
         font-size: 1rem;
       }
 
-      .main-box {
-        padding: 1.5rem 1rem;
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .hero-logo {
+        width: 200px;
+      }
+
+      .product-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .product-title {
+        font-size: 2.5rem;
+      }
+
+      .product-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .company-tagline {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -466,43 +759,108 @@
     </ul>
   </nav>
   
-  <div class="hero">
-    <img src="images/redrobin.jpg" alt="Background" class="hero-image">
+  <!-- PREMIUM HERO SECTION -->
+  <section class="hero-section">
+    <img src="images/FlairSpiritsHero.jpg" alt="Flair Spirits" class="hero-background">
+    <div class="hero-overlay"></div>
+    
     <div class="hero-content">
-      <div class="main-box">
-        
-        <img src="images/flairspirits.png" alt="Flair Spirits" class="flair-logo">
-        <div class="now-available">NOW AVAILABLE!!!</div>
-        
-        <div class="cta-container">
-          <a href="https://www.flairspirits.com" target="_blank" class="cta-button">
-            <span>Visit Flair Spirits</span>
+      <div class="hero-left">
+        <div class="hero-eyebrow">Now Available</div>
+        <h1 class="hero-title">FLAIR SPIRITS<br>ARE HERE</h1>
+        <div class="hero-awards">
+          <strong>NYWSC 2025 Double Gold & Best of Class</strong> Flair Vodka<br>
+          <strong>Silver Medal</strong> Bourbon
+        </div>
+        <p class="hero-description">
+          Discover the spirits that carry the same swagger as their namesake, produced by Stone Camp Distribution.
+        </p>
+        <div class="hero-cta">
+          <a href="https://www.flairspirits.com" target="_blank" class="hero-button">
+            <span>LEARN MORE</span>
+            <i class="fas fa-arrow-right"></i>
           </a>
         </div>
+      </div>
 
-        <div class="divider"></div>
-
-        <div class="company-section">
-          <img src="images/logo.png" alt="Stone Camp Distribution" class="company-logo">
-          <div class="tagline">Where Hard Work Meets High Spirits</div>
-          <p class="description">We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.</p>
-          
-          <div class="cta-container">
-            <a href="mailto:sales@stone-camp.com" class="cta-button secondary">
-              <span>Contact Us</span>
-            </a>
+      <div class="hero-right">
+        <div class="hero-logo-container">
+          <img src="images/flairspirits.png" alt="Flair Spirits Logo" class="hero-logo">
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-title">
+            AWARD-WINNING<br>SPIRITS
           </div>
         </div>
-        
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="footer">
+  <!-- PRODUCT SHOWCASE SECTION -->
+  <section class="product-section">
+    <h2 class="product-title">WOOOOO!</h2>
+    <p class="product-subtitle">What's Your Choice?</p>
+    
+    <div class="product-grid">
+      <div class="product-card">
+        <a href="https://www.flairspirits.com" target="_blank">
+          <div class="product-image-wrapper">
+            <img src="images/flairvodka.png" alt="Flair Vodka" class="product-image">
+          </div>
+          <div class="product-overlay">
+            <div class="product-name">FLAIR VODKA</div>
+            <div class="product-cta">Learn More →</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="product-card">
+        <a href="https://www.flairspirits.com" target="_blank">
+          <div class="product-image-wrapper">
+            <img src="images/flairgin.png" alt="Flair Gin" class="product-image">
+          </div>
+          <div class="product-overlay">
+            <div class="product-name">FLAIR GIN</div>
+            <div class="product-cta">Learn More →</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="product-card">
+        <a href="https://www.flairspirits.com" target="_blank">
+          <div class="product-image-wrapper">
+            <img src="images/flairbourbon.png" alt="Flair Bourbon" class="product-image">
+          </div>
+          <div class="product-overlay">
+            <div class="product-name">FLAIR BOURBON</div>
+            <div class="product-cta">Learn More →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY SECTION -->
+  <section class="content-section">
+    <div class="content-wrapper">
+      <div class="company-box">
+        <img src="images/logo.png" alt="Stone Camp Distribution" class="company-logo">
+        <h2 class="company-tagline">Where Hard Work Meets High Spirits</h2>
+        <p class="company-description">
+          We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.
+        </p>
+        <div class="company-cta">
+          <a href="mailto:sales@stone-camp.com" class="company-button">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
     <a href="https://www.facebook.com/stonecampdistribution" target="_blank" class="social-link">
       <i class="fab fa-facebook"></i>
     </a>
-  </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
