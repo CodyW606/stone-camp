@@ -600,8 +600,9 @@
       .hero-content {
         flex-direction: column;
         text-align: center;
-        padding: 8rem 2rem 2rem;
-        gap: 3rem;
+        padding: 7rem 2rem 2rem !important;
+        gap: 1.5rem;
+        justify-content: center;
       }
 
       .hero-left {
@@ -612,16 +613,34 @@
         font-size: 4rem;
       }
 
+      .hero-eyebrow {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
       .hero-awards {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .hero-description {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-right {
+        gap: 1rem;
       }
 
       .hero-logo {
-        width: 280px;
+        width: 220px;
+      }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .hero-button {
+        justify-content: center;
       }
 
       .product-section {
@@ -644,12 +663,12 @@
         gap: 2rem;
         padding: 0 1rem 2rem;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
 
       .product-grid::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
+        display: none;
       }
 
       .product-card {
@@ -700,7 +719,11 @@
       }
 
       .hero-section {
-        min-height: 600px;
+        min-height: 100svh;
+      }
+
+      .hero-content {
+        padding: 5rem 1.5rem 2rem !important;
       }
 
       .hero-title {
@@ -708,25 +731,26 @@
       }
 
       .hero-eyebrow {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
       .hero-awards {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .hero-description {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .hero-logo {
-        width: 240px;
+        width: 180px;
       }
 
       .hero-button {
         width: 100%;
-        max-width: 300px;
-        justify-content: center;
+        max-width: 280px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
       }
 
       .product-title {
@@ -752,20 +776,33 @@
     }
 
     @media (max-width: 480px) {
+      .hero-content {
+        padding: 5rem 1.2rem 1.5rem !important;
+        gap: 1rem;
+      }
+
       .hero-title {
         font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
       }
 
       .hero-awards {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
       }
 
       .hero-description {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
       }
 
       .hero-logo {
-        width: 200px;
+        width: 150px;
       }
 
       .product-section {
