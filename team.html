@@ -100,50 +100,6 @@
       padding: 0;
     }
     
-    /* HERO SECTION */
-    .hero-section {
-      position: relative;
-      height: 50vh;
-      min-height: 400px;
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-      margin-top: 85px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 5rem;
-      line-height: 1;
-      letter-spacing: 4px;
-      color: white;
-      text-transform: uppercase;
-      text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    .hero-subtitle {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #8e7654;
-      margin-top: 1rem;
-      animation: fadeInUp 1s ease forwards 0.2s;
-      opacity: 0;
-    }
-
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -153,6 +109,22 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    .page-top-spacer {
+      margin-top: 85px;
+    }
+
+    .team-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8e7654;
+      text-align: center;
+      margin-top: 1.5rem;
+      animation: fadeInUp 1s ease forwards;
     }
 
     /* TEAM SECTION */
@@ -463,26 +435,22 @@
     </ul>
   </nav>
   
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">MEET THE TEAM</h1>
-      <p class="hero-subtitle">The People Behind The Spirit</p>
-    </div>
-  </section>
+  <div class="page-top-spacer"></div>
 
   <!-- TEAM SECTION -->
   <section class="team-section">
     <div class="team-wrapper">
       <div class="logo-container">
         <img src="images/logo.png" alt="Stone Camp Distribution" class="company-logo">
+        <p class="team-heading">Meet the Team</p>
       </div>
 
       <div class="team-grid">
         <a href="./team/tom.html" class="team-member">
           <div class="member-image-wrapper">
             <div class="member-image">
-              <img src="images/tom.jpg" alt="Tom" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML=''">
+              <img src="images/tom.jpg" alt="Tom" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
             </div>
           </div>
           <div class="member-name">TOM C. SMITH</div>
@@ -493,7 +461,8 @@
         <a href="./team/bhula.html" class="team-member">
           <div class="member-image-wrapper">
             <div class="member-image">
-              <img src="images/bhula.jpg" alt="Bhula" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML=''">
+              <img src="images/bhula.jpg" alt="Bhula" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
             </div>
           </div>
           <div class="member-name">H. BHULA</div>
@@ -504,7 +473,8 @@
         <a href="./team/raj.html" class="team-member">
           <div class="member-image-wrapper">
             <div class="member-image">
-              <img src="images/raj.jpg" alt="Raj" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML=''">
+              <img src="images/raj.jpg" alt="Raj" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
             </div>
           </div>
           <div class="member-name">RAJ BHULA</div>
@@ -515,11 +485,60 @@
         <a href="./team/patrick.html" class="team-member">
           <div class="member-image-wrapper">
             <div class="member-image">
-              <img src="images/patrick.jpg" alt="Patrick" onerror="this.parentElement.style.display='flex';this.style.display='none';this.parentElement.innerHTML=''">
+              <img src="images/patrick.jpg" alt="Patrick" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
             </div>
           </div>
           <div class="member-name">PATRICK PATEL</div>
-          <div class="member-title">Team Member</div>
+          <div class="member-title">Director of Sales & Growth</div>
+          <div class="member-bio">Bio coming soon</div>
+        </a>
+
+        <a href="./team/cody.html" class="team-member">
+          <div class="member-image-wrapper">
+            <div class="member-image">
+              <img src="images/cody.jpg" alt="Cody" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">CODY WEST</div>
+          <div class="member-title">Marketing Director</div>
+          <div class="member-bio">Bio coming soon</div>
+        </a>
+
+        <a href="./team/jonathan.html" class="team-member">
+          <div class="member-image-wrapper">
+            <div class="member-image">
+              <img src="images/jonathan.jpg" alt="Jonathan" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">JONATHAN FOSTER</div>
+          <div class="member-title">Brand Ambassador - Tennessee</div>
+          <div class="member-bio">Bio coming soon</div>
+        </a>
+
+        <a href="./team/brittany.html" class="team-member">
+          <div class="member-image-wrapper">
+            <div class="member-image">
+              <img src="images/brittany.jpg" alt="Brittany" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">BRITTANY CHARNLEY</div>
+          <div class="member-title">Brand Ambassador - Tennessee</div>
+          <div class="member-bio">Bio coming soon</div>
+        </a>
+
+        <a href="./team/mark.html" class="team-member">
+          <div class="member-image-wrapper">
+            <div class="member-image">
+              <img src="images/mark.jpg" alt="Mark" onerror="this.style.display='none'">
+              <svg class="avatar-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;width:60%;height:60%;fill:#444"><circle cx="50" cy="35" r="22"/><path d="M10 85 Q10 60 50 60 Q90 60 90 85Z"/></svg>
+            </div>
+          </div>
+          <div class="member-name">MARK LAMONTE</div>
+          <div class="member-title">Brand Ambassador - Florida</div>
           <div class="member-bio">Bio coming soon</div>
         </a>
       </div>
@@ -539,6 +558,21 @@
       
       menuButton.addEventListener('click', function() {
         navMenu.classList.toggle('show');
+      });
+
+      // Try .jpg first, then .png, then show avatar fallback
+      document.querySelectorAll('.member-image img').forEach(function(img) {
+        var src = img.getAttribute('src'); // e.g. images/cody.jpg
+        var base = src.replace(/\.(jpg|png)$/i, '');
+        img.addEventListener('error', function() {
+          if (img.src.match(/\.jpg$/i)) {
+            img.src = base + '.png';
+          } else {
+            img.style.display = 'none';
+            var fallback = img.parentElement.querySelector('.avatar-fallback');
+            if (fallback) fallback.style.display = 'block';
+          }
+        });
       });
     });
   </script>
