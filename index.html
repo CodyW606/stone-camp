@@ -95,13 +95,27 @@
       padding: 0;
     }
     
-    /* HERO SECTION */
+    /* HERO SLIDER */
     .hero-section {
       position: relative;
       height: 100vh;
       min-height: 700px;
       width: 100%;
       overflow: hidden;
+    }
+
+    .hero-slider {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .hero-slide {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
     }
@@ -155,8 +169,6 @@
       text-transform: uppercase;
       color: #8e7654;
       margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards 0.2s;
     }
 
     .hero-title {
@@ -167,8 +179,6 @@
       color: white;
       margin-bottom: 1.5rem;
       text-transform: uppercase;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards 0.4s;
       text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
     }
 
@@ -179,8 +189,6 @@
       line-height: 1.7;
       color: #f0f0f0;
       margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards 0.6s;
     }
 
     .hero-awards strong {
@@ -195,13 +203,6 @@
       line-height: 1.8;
       color: #e0e0e0;
       margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards 0.8s;
-    }
-
-    .hero-cta {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards 1s;
     }
 
     .hero-button {
@@ -237,22 +238,10 @@
       z-index: -1;
     }
 
-    .hero-button:hover::before {
-      left: 0;
-    }
-
-    .hero-button:hover {
-      color: #000;
-      border-color: white;
-    }
-
-    .hero-button i {
-      transition: transform 0.3s ease;
-    }
-
-    .hero-button:hover i {
-      transform: translateX(5px);
-    }
+    .hero-button:hover::before { left: 0; }
+    .hero-button:hover { color: #000; border-color: white; }
+    .hero-button i { transition: transform 0.3s ease; }
+    .hero-button:hover i { transform: translateX(5px); }
 
     .hero-right {
       flex: 0 0 auto;
@@ -260,13 +249,9 @@
       flex-direction: column;
       align-items: center;
       gap: 2rem;
-      opacity: 0;
-      animation: fadeInRight 1s ease forwards 0.6s;
     }
 
-    .hero-logo-container {
-      text-align: center;
-    }
+    .hero-logo-container { text-align: center; }
 
     .hero-logo {
       width: 350px;
@@ -291,26 +276,40 @@
       line-height: 1.6;
     }
 
+    /* Slider dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+      z-index: 20;
+    }
+
+    .hero-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s ease;
+    }
+
+    .hero-dot.active {
+      background: #db1f1a;
+    }
+
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     /* PRODUCT SHOWCASE SECTION */
@@ -801,40 +800,78 @@
     </ul>
   </nav>
   
-  <!-- PREMIUM HERO SECTION -->
+  <!-- HERO SLIDER -->
   <section class="hero-section">
-    <img src="images/FlairSpiritsHero.jpg" alt="Flair Spirits" class="hero-background">
-    <div class="hero-overlay"></div>
-    
-    <div class="hero-content">
-      <div class="hero-left">
-        <div class="hero-eyebrow">Now Available</div>
-        <h1 class="hero-title">FLAIR SPIRITS<br>ARE HERE.</h1>
-        <div class="hero-awards">
-          <strong>NYWSC 2025 Double Gold & Best of Class</strong> Flair Vodka<br>
-          <strong>Silver Medal</strong> Flair Bourbon
-        </div>
-        <p class="hero-description">
-          Discover the spirits that carry the same swagger as their namesake, produced by Stone Camp Distribution.
-        </p>
-        <div class="hero-cta">
-          <a href="https://www.flairspirits.com" target="_blank" class="hero-button">
-            <span>GET YOURS HERE!</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
+    <div class="hero-slider" id="heroSlider">
 
-      <div class="hero-right">
-        <div class="hero-logo-container">
-          <img src="images/flairspirits.png" alt="Flair Spirits Logo" class="hero-logo">
-        </div>
-        <div class="hero-badge">
-          <div class="hero-badge-title">
-            AWARD-WINNING<br>SPIRITS
+      <!-- SLIDE 1: FLAIR SPIRITS -->
+      <div class="hero-slide">
+        <img src="images/FlairSpiritsHero.jpg" alt="Flair Spirits" class="hero-background">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="hero-eyebrow">Now Available</div>
+            <h1 class="hero-title">FLAIR SPIRITS<br>ARE HERE.</h1>
+            <div class="hero-awards">
+              <strong>NYWSC 2025 Double Gold & Best of Class</strong> Flair Vodka<br>
+              <strong>Silver Medal</strong> Flair Bourbon
+            </div>
+            <p class="hero-description">
+              Discover the spirits that carry the same swagger as their namesake, produced by Stone Camp Distribution.
+            </p>
+            <div class="hero-cta">
+              <a href="https://www.flairspirits.com" target="_blank" class="hero-button">
+                <span>GET YOURS HERE!</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-logo-container">
+              <img src="images/flairspirits.png" alt="Flair Spirits Logo" class="hero-logo">
+            </div>
+            <div class="hero-badge">
+              <div class="hero-badge-title">AWARD-WINNING<br>SPIRITS</div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- SLIDE 2: TRUCE SPIRITS -->
+      <div class="hero-slide">
+        <img src="images/hatfieldmccoy.jpg" alt="Truce Spirits" class="hero-background" onerror="this.src='images/hatfieldmccoy.png'">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="hero-eyebrow">9 Years in the Making.</div>
+            <h1 class="hero-title">TRUCE SPIRITS...<br>COMING SOON.</h1>
+            <p class="hero-description">
+              Bringing people together with Exceptional Whiskey, Born from the bloodline of America's Most Famous Feud.
+            </p>
+            <div class="hero-cta">
+              <a href="https://www.trucespirits.com" target="_blank" class="hero-button">
+                <span>LEARN MORE</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-logo-container">
+              <img src="images/trucelogo.png" alt="Truce Spirits Logo" class="hero-logo" onerror="this.src='images/trucelogo.jpg'">
+            </div>
+            <div class="hero-badge">
+              <div class="hero-badge-title">9 YEAR<br>BOURBON</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dots -->
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="goToSlide(0)"></button>
+      <button class="hero-dot" onclick="goToSlide(1)"></button>
     </div>
   </section>
 
@@ -895,7 +932,7 @@
           We are committed to providing personalized support, strategic guidance, and unwavering dedication to our clients against all challenges of bringing a new product to market.
         </p>
         <div class="company-cta">
-          <a href="mailto:sales@stone-camp.com" class="company-button">Contact Us</a>
+          <a href="/cdn-cgi/l/email-protection#d0a3b1bcb5a390a3a4bfbeb5fdb3b1bda0feb3bfbd" class="company-button">Contact Us</a>
         </div>
       </div>
     </div>
@@ -907,15 +944,29 @@
     </a>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.addEventListener('DOMContentLoaded', function() {
       const menuButton = document.querySelector('.menu-button');
       const navMenu = document.querySelector('nav ul');
-      
+
       menuButton.addEventListener('click', function() {
         navMenu.classList.toggle('show');
       });
-    });
-  </script>
+
+      // Hero slider
+      var current = 0;
+      var total = 2;
+      var autoTimer = setInterval(function() { goToSlide((current + 1) % total); }, 5000);
+
+      window.goToSlide = function(index) {
+        current = index;
+        document.getElementById('heroSlider').style.transform = 'translateX(-' + (index * 50) + '%)';
+        document.querySelectorAll('.hero-dot').forEach(function(d, i) {
+          d.classList.toggle('active', i === index);
+        });
+        clearInterval(autoTimer);
+        autoTimer = setInterval(function() { goToSlide((current + 1) % total); }, 5000);
+      };
+    });  </script>
 </body>
 </html>
